@@ -265,13 +265,6 @@ th {
   }
 }
 @font-face {
-    font-family: 'mugenplus';
-    src: url('../fonts/mgenplus-1c-light.eot');
-    src: url('../fonts/mgenplus-1c-light.eot?iefix') format('eot'),
-         url('../fonts/mgenplus-1c-light.woff') format('woff'),
-         url('../fonts/mgenplus-1c-light.ttf') format('truetype');
-}
-@font-face {
   font-family: 'Glyphicons Halflings';
 
   src: url('../fonts/glyphicons-halflings-regular.eot');
