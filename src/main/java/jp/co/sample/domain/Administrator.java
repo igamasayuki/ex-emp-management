@@ -10,7 +10,7 @@ public class Administrator {
 	//パスワード
 	String password;
 	
-	Administrator(){
+	public Administrator(){
 	}
 
 	public Administrator(Integer id, String name, String mailAddress, String password) {
