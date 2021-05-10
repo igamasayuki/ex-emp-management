@@ -28,7 +28,7 @@ public class AdministratorRepository {
 		Administrator administrator = new Administrator();
 		administrator.setId(rs.getInt("id"));
 		administrator.setName(rs.getString("name"));
-		administrator.setMailAddress(rs.getString("mailaddress"));
+		administrator.setMailAddress(rs.getString("mail_address"));
 		administrator.setPassword(rs.getString("password"));
 		return administrator;
 	};
@@ -42,8 +42,8 @@ public class AdministratorRepository {
 		//プレースホルダ名と Administrator オブジェクトのプロパティを関連付ける
 		SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
 		if (administrator.getId() == null) { 	//引数のadministratorオブジェクトがnullならINSERT文の実行
-			String insertSql = "INSERT INTO administrators(name,mailaddress,password) "
-							 + " VALUES(:name,:mailaddress,:password)";
+			String insertSql = "INSERT INTO administrators(name, mail_address, password) "
+							 + " VALUES(:name, :mailAddress, :password)";
 			KeyHolder keyHolder = new GeneratedKeyHolder();
 			String[] keyColumnNames = {"id"};
 			template.update(insertSql, param, keyHolder, keyColumnNames);
@@ -62,10 +62,10 @@ public class AdministratorRepository {
 	 * @return メールアドレスとパスワードに一致したユーザー情報を返す
 	 */
 	public Administrator findByMailAddressAndPassword(String mailAddress, String password){
-		String sql = "select id,name,mailaddress,password from administrators "
-				+ "where mailaddress = :mailaddress, password = :password";
+		String sql = "select id, name, mail_address, password from administrators "
+				+ "where mail_address = :mail_address, password = :password";
 		// ←ここにプレースホルダにセットする処理を書く
-		SqlParameterSource param = new MapSqlParameterSource().addValue("mailaddress", mailAddress).addValue("password", password);
+		SqlParameterSource param = new MapSqlParameterSource().addValue("mail_address", mailAddress).addValue("password", password);
 		
 		List<Administrator> administratorList= template.query(sql, param, ADMINISTRATOR_ROW_MAPPER); 
 		if (administratorList.size() == 0) {

@@ -30,14 +30,14 @@ public class EmployeeRepository {
 		employee.setName(rs.getString("name"));
 		employee.setImage(rs.getString("image"));
 		employee.setGender(rs.getString("gender"));
-		employee.setHireDate(rs.getDate("hiredate"));
-		employee.setMailAddress(rs.getString("mailaddress"));
-		employee.setZipCode(rs.getString("zipcode"));
+		employee.setHireDate(rs.getDate("hire_date"));
+		employee.setMailAddress(rs.getString("mail_address"));
+		employee.setZipCode(rs.getString("zip_code"));
 		employee.setAddress(rs.getString("address"));
 		employee.setTelephone(rs.getString("telephone"));
 		employee.setSalary(rs.getInt("salary"));
 		employee.setCharacteristics(rs.getString("characteristics"));
-		employee.setDependentsCount(rs.getInt("dependentsCount"));
+		employee.setDependentsCount(rs.getInt("dependents_Count"));
 		return employee;
 	};
 	/**
@@ -45,7 +45,8 @@ public class EmployeeRepository {
 	 * @return　全従業員一覧
 	 */
 	public List<Employee> findAll() {
-		String sql = "SELECT id, name, image, gender, hiredate, mailaddress, zipcode, address, telephone, salary, characteristics, dependentsCount "
+		String sql = "SELECT id, name, image, gender, hire_date, mail_address, "
+				+ "zip_code, address, telephone, salary, characteristics, dependents_count "
 				+ "FROM employees "
 				+ "ORDER BY hiredate DESC; ";
 		List<Employee>employeeList	= template.query(sql, EMPLOYEE_ROW_MAPPER);
@@ -59,7 +60,7 @@ public class EmployeeRepository {
 	 */
 	public Employee load(Integer id) {
 		String sql =
-				"SELECT id, name, image, gender, hiredate, mailaddress, zipcode, address, telephone, salary, characteristics, dependentsCount "
+				"SELECT id, name, image, gender, hire_date, mail_address, zip_code, address, telephone, salary, characteristics, dependents_count "
 				+ "FROM employees WHERE id =:id;";
 		//SQL 文の「:id」プレースホルダ名に引数でもらった id を埋め込む。
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
@@ -77,10 +78,11 @@ public class EmployeeRepository {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
 
 		String updateSql = "UPDATE employees "
-					+ "SET name=:name, image=:image, gender=:gender, hiredate=:hiredate, mailaddress=:mailaddress, "
-					+ 			"zipcode=:zipcode, address=:address, telephone=:telephone, salary=:salary, "
-					+ 			"characteristics=:characteristics, dependentsCount=dependentsCount " 
-					+ 			" gender=:gender,department_id=:departmentId" 
+					+ "SET name=:name, image=:image, gender=:gender, "
+					+ 			"hire_date=:hire_date, mail_address=:mail_address, "
+					+ 			"zip_code=:zip_code, address=:address, "
+					+ 			"telephone=:telephone, salary=:salary, "
+					+ 			"characteristics=:characteristics, dependents_count=:dependents_count " 
 					+ " WHERE id=:id;";
 			
 		KeyHolder keyHolder = new GeneratedKeyHolder();

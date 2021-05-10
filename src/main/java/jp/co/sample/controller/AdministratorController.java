@@ -26,7 +26,6 @@ public class AdministratorController {
 		InsertAdministratorForm insertAdministratorForm = new InsertAdministratorForm();
 		return insertAdministratorForm;
 	}
-	
 	/**
 	 * 
 	 * @return 「administrator/insert.html」にフォワード
@@ -39,7 +38,7 @@ public class AdministratorController {
 	@RequestMapping("/insert")
 	public String insert(InsertAdministratorForm form) {
 		Administrator administrator = new Administrator();
-		//InsertAdministratorForm オブジェクトの中身を今イン スタンス化した Administrator ドメインオブジェクトに コピーする
+		//InsertAdministratorForm オブジェクトの中身を今インスタンス化したAdministratorドメインオブジェクトにコピーする
 		BeanUtils.copyProperties(form, administrator);
 		//administratorService の insert()メソッドを呼ぶ
 		administratorService.insert(administrator);
