@@ -10,10 +10,9 @@ import org.springframework.stereotype.Repository;
 
 import jp.co.sample.domain.Administrator;
 
-
-
 @Repository
 public class AdministratorRepository {
+	
 	@Autowired
 	private NamedParameterJdbcTemplate template;
 
@@ -21,7 +20,7 @@ public class AdministratorRepository {
 		Administrator administrator = new Administrator();
 		administrator.setId(rs.getInt("id"));
 		administrator.setName(rs.getString("name"));
-		administrator.setMailAddress(rs.getString("mailaddress"));
+		administrator.setMailAddress(rs.getString("mail_address"));
 		administrator.setPassword(rs.getString("password"));
 		return administrator;
 	};
@@ -37,11 +36,11 @@ public class AdministratorRepository {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
 
 		if (administrator.getId() == null) {
-			String insertSql = "INSERT INTO administrator(name,mailaddress,password) "
-					+ " VALUES(:name,:mailaddres,:password)";
+			String insertSql = "INSERT INTO administrators(name,mail_address,password) "
+					+ " VALUES(:name,:mailAddres,:password)";
 			template.update(insertSql, param);
 		} else {
-			String updateSql = "UPDATE administrator SET name=:name,　mailaddress=:mailaddress, " + " password=:password"
+			String updateSql = "UPDATE administrators SET name=:name,　mail_address=:mailAddress, " + " password=:password"
 					+ " WHERE　id=:id";
 
 			template.update(updateSql, param);
@@ -57,7 +56,7 @@ public class AdministratorRepository {
 	 */
 	public Administrator findByMailAddressAndPassword(String mailAddress,String password) {
 		String sql =
-				 "SELECT id,name,mailaddress,password FROM administrators WHERE mailaddress=:mailaddress OR password:password";
+				 "SELECT id,name,mail_address,password FROM administrators WHERE mail_address=:mailAddress OR password:password";
 				
 				 SqlParameterSource param
 				 = new MapSqlParameterSource().addValue("mailAddress", mailAddress).addValue("password",password);
