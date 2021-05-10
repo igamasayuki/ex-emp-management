@@ -6,22 +6,22 @@ public class Administrator {
 	 */
 	private Integer id;
 	private String name;
-	private String mailaddress;
+	private String mailAddress;
 	private String password;
 	
 	public Administrator() {}
 	
-	public Administrator(Integer id, String name, String mailaddress, String password) {
+	public Administrator(Integer id, String name, String mailAddress, String password) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.mailaddress = mailaddress;
+		this.mailAddress = mailAddress;
 		this.password = password;
 	}
 
 	@Override
 	public String toString() {
-		return "Administrator [id=" + id + ", name=" + name + ", mailaddress=" + mailaddress + ", password=" + password
+		return "Administrator [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
 				+ "]";
 	}
 
@@ -37,11 +37,11 @@ public class Administrator {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getMailaddress() {
-		return mailaddress;
+	public String getMailAddress() {
+		return mailAddress;
 	}
-	public void setMailaddress(String mailaddress) {
-		this.mailaddress = mailaddress;
+	public void setMailAddress(String mailAddress) {
+		this.mailAddress = mailAddress;
 	}
 	public String getPassword() {
 		return password;
