@@ -63,7 +63,7 @@ public class AdministratorRepository {
 	 */
 	public Administrator findByMailAddressAndPassword(String mailAddress, String password){
 		String sql = "select id, name, mail_address, password from administrators "
-				+ "where mail_address = :mail_address, password = :password";
+				+ "where mail_address = :mail_address AND password = :password";
 		// ←ここにプレースホルダにセットする処理を書く
 		SqlParameterSource param = new MapSqlParameterSource().addValue("mail_address", mailAddress).addValue("password", password);
 		
