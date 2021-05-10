@@ -1,0 +1,94 @@
+package jp.co.sample.repository;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
+
+import jp.co.sample.domain.Employee;
+
+@Repository
+public class EmployeeRepository {
+	
+	@Autowired
+	private NamedParameterJdbcTemplate template;
+
+	/**
+	 * Memberオブジェクトを生成するローマッパー.
+	 */
+	private static final RowMapper<Employee> EMPLOYEE_ROW_MAPPER = (rs, i) -> {
+		// ここに結果の処理を書く
+		Employee employee = new Employee();
+		employee.setId(rs.getInt("id"));
+		employee.setName(rs.getString("name"));
+		employee.setImage(rs.getString("image"));
+		employee.setGender(rs.getString("gender"));
+		employee.setHireDate(rs.getDate("hiredate"));
+		employee.setMailAddress(rs.getString("mailaddress"));
+		employee.setZipCode(rs.getString("zipcode"));
+		employee.setAddress(rs.getString("address"));
+		employee.setTelephone(rs.getString("telephone"));
+		employee.setSalary(rs.getInt("salary"));
+		employee.setCharacteristics(rs.getString("characteristics"));
+		employee.setDependentsCount(rs.getInt("dependentsCount"));
+		return employee;
+	};
+	/**
+	 * 全件検索を行う。
+	 * @return　全従業員一覧
+	 */
+	public List<Employee> findAll() {
+		String sql = "SELECT id, name, image, gender, hiredate, mailaddress, zipcode, address, telephone, salary, characteristics, dependentsCount "
+				+ "FROM employees "
+				+ "ORDER BY hiredate DESC; ";
+		List<Employee>employeeList	= template.query(sql, EMPLOYEE_ROW_MAPPER);
+		System.out.println("Repository の findAll()が呼ばれました"); 
+		return employeeList;
+	}
+	/**
+	 * 主キー検索を行う
+	 * @param id ID
+	 * @return 検索された従業員情報
+	 */
+	public Employee load(Integer id) {
+		String sql =
+				"SELECT id, name, image, gender, hiredate, mailaddress, zipcode, address, telephone, salary, characteristics, dependentsCount "
+				+ "FROM employees WHERE id =:id;";
+		//SQL 文の「:id」プレースホルダ名に引数でもらった id を埋め込む。
+		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
+		Employee employee = template.queryForObject(sql, param, EMPLOYEE_ROW_MAPPER);
+		System.out.println("Repository の load()が呼ばれました"); 
+		return employee;
+	}
+	/**
+	 * 渡した従業員情報を更新する
+	 * @param employee 従業員情報
+	 * @return　更新された後の従業員情報
+	 */
+	public void update(Employee employee){
+		//プレースホルダ名と Employee オブジェクトのプロパティを関連付ける
+		SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
+
+		String updateSql = "UPDATE employees "
+					+ "SET name=:name, image=:image, gender=:gender, hiredate=:hiredate, mailaddress=:mailaddress, "
+					+ 			"zipcode=:zipcode, address=:address, telephone=:telephone, salary=:salary, "
+					+ 			"characteristics=:characteristics, dependentsCount=dependentsCount " 
+					+ 			" gender=:gender,department_id=:departmentId" 
+					+ " WHERE id=:id;";
+			
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		String[] keyColumnNames = {"id"};
+		template.update(updateSql, param, keyHolder, keyColumnNames);
+		employee.setId(keyHolder.getKey().intValue());
+		System.out.println(keyHolder.getKey()+"が割り当てられました");
+		System.out.println("Repository の save()が呼ばれました");
+	}
+	
+}

@@ -17,7 +17,7 @@ public class Employee {
 	String characteristics;
 	Integer dependentsCount;
 	
-	Employee(){
+	public Employee(){
 	}
 
 	public Employee(Integer id, String name, String image, String gender, Date hireDate, String mailAddress,
