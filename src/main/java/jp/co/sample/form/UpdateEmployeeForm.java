@@ -5,11 +5,11 @@ public class UpdateEmployeeForm {
 	 * フィールド属性
 	 */
 	private String id;
-	private String dependentCount;
+	private String dependentsCount;
 	
 	@Override
 	public String toString() {
-		return "UpdateEmployeeForm [id=" + id + ", dependentCount=" + dependentCount + "]";
+		return "UpdateEmployeeForm [id=" + id + ", dependentsCount=" + dependentsCount + "]";
 	}
 
 	public String getId() {
@@ -20,11 +20,11 @@ public class UpdateEmployeeForm {
 		this.id = id;
 	}
 
-	public String getDependentCount() {
-		return dependentCount;
+	public String getDependentsCount() {
+		return dependentsCount;
 	}
 
-	public void setDependentCount(String dependentCount) {
-		this.dependentCount = dependentCount;
+	public void setDependentsCount(String dependentsCount) {
+		this.dependentsCount = dependentsCount;
 	}
 }

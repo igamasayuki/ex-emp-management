@@ -142,10 +142,4 @@ public class Employee {
 	public void setDependentsCount(Integer dependentsCount) {
 		this.dependentsCount = dependentsCount;
 	}
-	
-	
-	
-	
-	
-
 }

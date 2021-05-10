@@ -20,7 +20,6 @@ public class EmployeeService {
 	 * @return employeeList
 	 */
 	public List<Employee> showList(){
-		List<Employee> employeeList=employeeRepository.findAll();
-		return employeeList;
+		return employeeRepository.findAll();
 	}
 }
