@@ -64,7 +64,107 @@
 				
 <!-- ここから上を編集する必要はありません -->
 
-<!-- ここにモックのform要素を貼り付けます -->
+					<form method="post" action="list.html" th:object="${employee}">
+						<fieldset>
+							<legend>従業員情報</legend>
+							<table class="table table-striped">
+							  <tr>
+							    <th nowrap>
+							      従業員名
+							    </th>
+							    <td>
+							     <span　th:text="*{name}"></span>
+							    </td>
+							  </tr>
+							  <tr>
+							    <th nowrap>
+							      写真
+							    </th>
+							    <td>
+							      <img th:src="@{/img/{image}(image=${image})}">
+							    </td>
+							  </tr>
+							  <tr>
+							    <th nowrap>
+							      性別
+							    </th>
+							    <td>
+							      <span th:text="*{gender}"></span>
+							    </td>
+							  </tr>
+							  <tr>
+							    <th nowrap>
+							      入社日
+							    </th>
+							    <td>
+							      <span th:text="*{hireDate}"></span>
+							    </td>
+							  </tr>
+							  <tr>
+							    <th nowrap>
+							      メールアドレス
+							    </th>
+							    <td>
+							      <span th:text="*{mailAddress}"></span>
+							    </td>
+							  </tr>
+							  <tr>
+							    <th nowrap>
+							      郵便番号
+							    </th>
+							    <td>
+							      <span th:text="*{zipCode}"></span>
+							    </td>
+							  </tr>
+							  <tr>
+							    <th nowrap>
+							      住所
+							    </th>
+							    <td>
+							      <span th:text="*{address}"></span>
+							    </td>
+							  </tr>
+							  <tr>
+							    <th nowrap>
+							      電話番号
+							    </th>
+							    <td>
+							      <span th:text="*{telephone}"></span>
+							    </td>
+							  </tr>
+							  <tr>
+							    <th nowrap>
+							      給料
+							    </th>
+							    <td>
+							      <span th:text="*{salary}"></span>
+							    </td>
+							  </tr>
+							  <tr>
+							    <th nowrap>
+							      特性
+							    </th>
+							    <td>
+							      <span th:text="*{characteristics}"></span>
+							    </td>
+							  </tr>
+							  <tr>
+							    <th nowrap>
+							      扶養人数
+							    </th>
+							    <td>
+							    	<label class="error-messages">
+											扶養人数を入力してください
+									</label>
+									<label class="control-label" style="color: red" for="dependentsCount"></label>
+									<input type="hidden" name="id" th:value="*{id}">
+									<input type="text" name="dependentsCount" id="dependentsCount" class="form-control" th:value="*{dependentsCount}">
+							    </td>
+							  </tr>
+							</table>
+							<button type="submit" class="btn btn-primary">更新</button>
+						</fieldset>
+					</form>
 
 
 					
