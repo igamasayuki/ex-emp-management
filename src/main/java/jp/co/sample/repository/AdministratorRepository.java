@@ -12,7 +12,7 @@ import jp.co.sample.domain.Administrator;
 
 @Repository
 public class AdministratorRepository {
-	
+
 	@Autowired
 	private NamedParameterJdbcTemplate template;
 
@@ -40,8 +40,8 @@ public class AdministratorRepository {
 					+ " VALUES(:name,:mailAddres,:password)";
 			template.update(insertSql, param);
 		} else {
-			String updateSql = "UPDATE administrators SET name=:name,　mail_address=:mailAddress, " + " password=:password"
-					+ " WHERE　id=:id";
+			String updateSql = "UPDATE administrators SET name=:name,　mail_address=:mailAddress, "
+					+ " password=:password" + " WHERE　id=:id";
 
 			template.update(updateSql, param);
 		}
@@ -49,26 +49,26 @@ public class AdministratorRepository {
 	}
 
 	/**
-	 * メールアドレスとパスワードから管理者情報を取得する
-	 * (1件も存在しない場合はnullを返す。
-	 * @param mailaddress　MailAddress,Password　password
+	 * メールアドレスとパスワードから管理者情報を取得する (1件も存在しない場合はnullを返す。
+	 * 
+	 * @param mailaddress MailAddress,Password password
 	 * 
 	 */
-	public Administrator findByMailAddressAndPassword(String mailAddress,String password) {
-		String sql =
-				 "SELECT id,name,mail_address,password FROM administrators WHERE mail_address=:mailAddress OR password:password";
-				
-				 SqlParameterSource param
-				 = new MapSqlParameterSource().addValue("mailAddress", mailAddress).addValue("password",password);
-				
-				 
-				 Administrator administrator
-				 = template.queryForObject(sql, param, ADIMINISTRATOR_ROW_MAPPER);
-				
-				 
-				 return administrator;
-				 }
+	public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
+		
+		try {
+			SqlParameterSource param = new MapSqlParameterSource().addValue("mailAddress", mailAddress)
+					.addValue("password", password);
+
+			String sql = "SELECT id,name,mail_address,password FROM administrators"
+					+ " WHERE mail_address=:mailAddress AND password=:password";
+
+			Administrator administrator = template.queryForObject(sql, param, ADIMINISTRATOR_ROW_MAPPER);
+			return administrator;
+		} catch (Exception e) {
+			return null;
+		}
+		
+	}
 
 }
-
-

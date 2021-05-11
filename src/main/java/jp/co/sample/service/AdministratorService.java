@@ -19,4 +19,12 @@ public class AdministratorService {
 		AdministratorRepository administratorRepository = new AdministratorRepository();
 		administratorRepository.insert(administrator);
 	}
+	
+	//ログイン処理をする。
+	public Administrator login(String mailAddress,String password) {
+		//administratorRepositoryのfindByMailAddressAndPassword ()メソッドを呼ぶ
+		Administrator administrator = administratorRepository.findByMailAddressAndPassword(mailAddress, password);
+		//戻ってきた管理者情報をそのまま呼び出し元に返す。
+		return administrator;
+	}
 }
