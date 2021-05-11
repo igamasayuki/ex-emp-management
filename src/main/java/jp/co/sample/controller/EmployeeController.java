@@ -42,8 +42,19 @@ public class EmployeeController {
 		//employeeService の showDetail()メソッドを呼ぶ。
 		Employee employee = employeeService.showDetail(i);
 		model.addAttribute("employee",employee);
-		return "employee/detail";
-		
+		return "employee/detail";	
+	}
+	@RequestMapping("/update")
+	public String update(UpdateEmployeeForm form) {
+		//送られてきたリクエストパラメータの id を使用して
+		//EmployeeドメインをshowDetail()メソッドで主キー検索する
+		int id = Integer.parseInt(form.getId());
+		Employee employee = employeeService.showDetail(id);
+		//送られてきたリクエストパラメータの扶養人数を、検索してきた Employee ドメインにセットし上書きする
+		employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));
+		//employeeService の update()メソッドを呼ぶ
+		employeeService.update(employee);
+		return "redirect:/employee/showList";
 	}
 
 }
