@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -45,11 +47,15 @@ public class EmployeeController {
 		return "employee/detail";	
 	}
 	@RequestMapping("/update")
-	public String update(UpdateEmployeeForm form) {
+	public String update(@Validated UpdateEmployeeForm form, BindingResult bindingResult) {
 		//送られてきたリクエストパラメータの id を使用して
 		//EmployeeドメインをshowDetail()メソッドで主キー検索する
 		int id = Integer.parseInt(form.getId());
 		Employee employee = employeeService.showDetail(id);
+		//バリデーションエラー発生時には上書きしない
+		if(bindingResult.hasErrors()){
+			return "redirect:/employee/showList";
+		}
 		//送られてきたリクエストパラメータの扶養人数を、検索してきた Employee ドメインにセットし上書きする
 		employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));
 		//employeeService の update()メソッドを呼ぶ
