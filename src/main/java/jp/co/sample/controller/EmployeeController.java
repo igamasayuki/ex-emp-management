@@ -42,5 +42,20 @@ public class EmployeeController {
 		
 	}
 	
+	@RequestMapping("/showDetail")
+	public String showDetail(String id,Model model) {
+		//リクエストパラメータで送られてくる従業員IDを引数に(int型に変換してから)渡し
+		//model.addAttribute(Integer.parseInt("id"));	
+		
+		//employeeServiceのshowDetail()メソッドを呼ぶ 
+		//従業員情報(Employee)が戻り値として返ってくるのでそれを受け取る
+		Employee employee  = employeeService.showDetail(Integer.parseInt(id));
+		
+		//次の画面に表示するためにrequestスコープに従業員情報を「employee」という名前を付けて格納
+		model.addAttribute("employee",employee);
+		
+		//・「employee/detail.html」にフォワード
+		return "employee/detail";
+	}
 	
 }

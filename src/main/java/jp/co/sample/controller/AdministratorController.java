@@ -67,9 +67,9 @@ public class AdministratorController {
 		// LoginFormオブジェクトの中にあるメールアドレスとパスワードを取り出す
 		String mailAddress = form.getMailAddress();
 		String password = form.getPassword();
-//		AdministratorService administratorService = new AdministratorService();
 
-		// administratorServiceのlogin()メソッドを呼ぶ。Administratorオブジェクトが戻り値として返ってくるのでそれを受け取る
+		// administratorServiceのlogin()メソッドを呼ぶ。
+		//Administratorオブジェクトが戻り値として返ってくるのでそれを受け取る
 		Administrator administrator = administratorService.login(mailAddress, password);
 
 		// 戻り値がnullでなければログイン成功のため、以下を行う
