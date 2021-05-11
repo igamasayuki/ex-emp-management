@@ -80,5 +80,14 @@ public class AdministratorController {
 		}
 		
 	}
+	/**
+	 * HttpSession の invalidate()メソッドでセッション情報をクリアする
+	 * @return　ログイン画面にリダイレクト
+	 */
+	@RequestMapping("/logout")
+	public String logout() {
+		session.invalidate();
+		return "redirect:/";
+	}
 
 }
