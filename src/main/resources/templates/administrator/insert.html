@@ -30,7 +30,7 @@
 <!-- ここから上を編集する必要はありません -->
 
 					<form method="post" action="login.html"
-						th:action="@{/insert}">
+						th:action="@{/insert}" th:object="${insertAdministratorForm}">
 						<fieldset>
 							<legend>管理者登録<br>(システムにログインできる管理者を登録します)</legend>
 							<!-- 氏名 -->
@@ -40,10 +40,8 @@
 										<label for="name">
 											氏名:
 										</label>
-										<label class="error-messages">
-											氏名を入力してください
-										</label>
-										<input type="text" name="name" id="name" class="form-control" placeholder="山田太郎">
+										<div th:errors="*{name}" style="color:red"></div>
+										<input type="text" name="name" id="name" class="form-control" placeholder="山田太郎" th:field="*{name}">
 									</div>
 								</div>
 							</div>
@@ -54,10 +52,8 @@
 										<label for="mailAddress">
 											メールアドレス:
 										</label>
-										<label  class="error-messages">
-											メールアドレスを入力してください
-										</label>
-										<input type="text" name="mailAddress" id="mailAddress" class="form-control" placeholder="yamada@mail.com">
+										<div th:errors="*{mailAddress}" style="color:red"></div>
+										<input type="text" name="mailAddress" id="mailAddress" class="form-control" placeholder="yamada@mail.com" th:field="*{mailAddress}">
 									</div>
 								</div>
 							</div>
@@ -68,10 +64,8 @@
 										<label for="passwaord">
 											パスワード:
 										</label>
-										<label class="error-messages">
-											パスワードを入力してください
-										</label>
-										<input type="password" name="password" id="password" class="form-control" placeholder="password">
+										<div th:errors="*{password}" style="color:red"></div>
+										<input type="password" name="password" id="password" class="form-control" placeholder="password" th:field="*{password}">
 									</div>
 								</div>
 							</div>

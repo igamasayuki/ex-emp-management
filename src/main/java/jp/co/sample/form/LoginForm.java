@@ -1,10 +1,14 @@
 package jp.co.sample.form;
 
+import javax.validation.constraints.NotBlank;
+
 public class LoginForm {
 	/**
 	 * フィールド属性
 	 */
+	@NotBlank(message="メールアドレスを入力してください")
 	private String mailAddress;
+	@NotBlank(message="パスワードを入力してください")
 	private String password;
 	
 	@Override

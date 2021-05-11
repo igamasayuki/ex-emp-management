@@ -30,7 +30,7 @@
 
 
 					<form method="post" action="../employee/list.html"
-						th:action="@{/login}">
+						th:action="@{/login}" th:object="${loginForm}">
 						<fieldset>
 							<legend>ログイン</legend>
 							<div class="form-group">
@@ -40,11 +40,13 @@
 							</div>
 							<div class="form-group">
 								<label for="mailAddress">メールアドレス:</label>
-								<input type="text" name="mailAddress" id="mailAddress" class="form-control" placeholder="Email">
+								<div th:errors="*{mailAddress}" style="color:red"></div>
+								<input type="text" name="mailAddress" id="mailAddress" class="form-control" placeholder="Email" th:field="*{mailAddress}">
 							</div>
 							<div class="form-group">
 								<label for="inputPassword">パスワード:</label>
-								<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password">
+								<div th:errors="*{password}" style="color:red"></div>
+								<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" th:field="*{password}">
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary">ログイン</button>
