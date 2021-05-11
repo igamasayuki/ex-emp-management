@@ -64,8 +64,10 @@
 				
 <!-- ここから上を編集する必要はありません -->
 
-					<form method="post" action="list.html" th:object="${employee}">
-						<fieldset>
+					<form method="post" action="list.html"
+						th:action="@{/employee/update}" th:object="${updateEmployeeForm}">
+						<div th:object="${employee}">
+						  <fieldset>
 							<legend>従業員情報</legend>
 							<table class="table table-striped">
 							  <tr>
@@ -81,7 +83,7 @@
 							      写真
 							    </th>
 							    <td>
-							      <img th:src="@{/img/{image}(image=${image})}">
+							      <img th:src="@{/img/{image}(image=*{image})}">
 							    </td>
 							  </tr>
 							  <tr>
@@ -164,6 +166,7 @@
 							</table>
 							<button type="submit" class="btn btn-primary">更新</button>
 						</fieldset>
+					  </div>
 					</form>
 
 

@@ -70,7 +70,6 @@ public class AdministratorController {
 		String mailAddress=form.getMailAddress();
 		String password=form.getPassword();
 		administrator=administratorService.login(mailAddress,password);
-		System.out.println(administrator);
 		if(Objects.equals(administrator,null)) {
 			model.addAttribute("message","メールアドレスまたはパスワードが不正です。");
 			return "forward:/";
