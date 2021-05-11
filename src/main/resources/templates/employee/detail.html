@@ -40,7 +40,7 @@
 					<p class="navbar-text navbar-right">
 						<span th:text="${session.administratorName + 'さん'}">山田さん</span>こんにちは！
 						&nbsp;&nbsp;&nbsp;
-						<a href="../administrator/login.html" class="navbar-link">ログアウト</a>
+						<a href="../administrator/login.html" th:href="@{/logout}" class="navbar-link">ログアウト</a>
 					</p>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -69,7 +69,7 @@
 						<div th:object="${employee}">
 						  <fieldset>
 							<legend>従業員情報</legend>
-							<table class="table table-striped">
+							 <table class="table table-striped">
 							  <tr>
 							    <th nowrap>
 							      従業員名
@@ -164,7 +164,7 @@
 							    </td>
 							  </tr>
 							</table>
-							<button type="submit" class="btn btn-primary">更新</button>
+						  <button type="submit" class="btn btn-primary">更新</button>
 						</fieldset>
 					  </div>
 					</form>
