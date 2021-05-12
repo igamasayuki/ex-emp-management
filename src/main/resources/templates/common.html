@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head xmlns:th="http://www.thymeleaf.org" th:fragment="head_fragment(title, scripts, links)">
+  <meta charset="UTF-8">
+  <title th:text="${title}"></title>
+  <!-- 全画面共通のcssを定義します -->
+<link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" >
+<link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}" >
+  <!-- 各画面専用のcssを定義します -->
+  <th:block th:replace="${links}" />
+  <!-- 全画面共通のjavascriptを定義します -->
+  <script type="text/javascript" th:src="@{/scripts/base.js}"></script>
+  <!-- 各画面専用のjavascriptを定義します -->
+  <th:block th:replace="${scripts}" />
+</head>
+
+<body>
+    <header xmlns:th="http://www.thymeleaf.org"  th:fragment="header">
+    <div class="container">
+		<div class="row">
+			<div class="col-lg-offset-0 col-lg-6 col-md-8 col-sm-10 col-xs-12">
+				<img src="../../static/img/header_logo.png" th:src="@{/img/header_logo.png}">
+			</div>
+		</div>
+		<!-- login form -->
+		<div class="row">
+			<div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-10 col-xs-12">
+				<div class="well">
+				</div>
+			</div>
+		</div>
+	</div>
+    </header>
+    <footer xmlns:th="http://www.thymeleaf.org" th:fragment="footer_" id="footer">
+	  サンプルアプリケーションのフッターです。
+	</footer>
+</body>
+</html>

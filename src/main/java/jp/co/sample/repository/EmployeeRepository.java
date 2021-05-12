@@ -19,7 +19,6 @@ public class EmployeeRepository {
 	
 	@Autowired
 	private NamedParameterJdbcTemplate template;
-
 	/**
 	 * Memberオブジェクトを生成するローマッパー.
 	 */

@@ -52,15 +52,28 @@ public class EmployeeController {
 		//EmployeeドメインをshowDetail()メソッドで主キー検索する
 		int id = Integer.parseInt(form.getId());
 		Employee employee = employeeService.showDetail(id);
+		
 		//バリデーションエラー発生時には上書きしない
 		if(bindingResult.hasErrors()){
 			return "redirect:/employee/showList";
 		}
-		//送られてきたリクエストパラメータの扶養人数を、検索してきた Employee ドメインにセットし上書きする
+		//送られてきたリクエストパラメータを、検索してきた Employee ドメインにセットし上書きする
+		
 		employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));
+		employee.setName(form.getName());
+		employee.setGender(form.getGender());
+		employee.setMailAddress(form.getMailAddress());
+		employee.setZipCode(form.getZipCode());
+		employee.setAddress(form.getAddress());
+		employee.setTelephone(form.getTelephone());
+		employee.setSalary(form.getSalary());
+		employee.setCharacteristics(form.getCharacteristics());
+		employee.setHireDate(form.getHireDate());
+		//date型確認用
+		System.out.println(form.getHireDate());
+
 		//employeeService の update()メソッドを呼ぶ
 		employeeService.update(employee);
 		return "redirect:/employee/showList";
 	}
-
 }
