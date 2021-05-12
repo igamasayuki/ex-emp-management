@@ -75,7 +75,8 @@
 							      従業員名
 							    </th>
 							    <td>
-							     <span　th:text="*{name}"></span>
+							     
+								 <input type="text" name="name" id="name" class="form-control" th:value="*{name}">
 							    </td>
 							  </tr>
 							  <tr>
@@ -91,7 +92,8 @@
 							      性別
 							    </th>
 							    <td>
-							      <span th:text="*{gender}"></span>
+							      
+								  <input type="text" name="gender" id="gender" class="form-control" th:value="*{gender}">
 							    </td>
 							  </tr>
 							  <tr>
@@ -99,7 +101,8 @@
 							      入社日
 							    </th>
 							    <td>
-							      <span th:text="*{hireDate}"></span>
+							      
+								  <input type="text" name="hireDate" id="hireDate" class="form-control" th:value="*{hireDate}">
 							    </td>
 							  </tr>
 							  <tr>
@@ -107,7 +110,8 @@
 							      メールアドレス
 							    </th>
 							    <td>
-							      <span th:text="*{mailAddress}"></span>
+							      
+								  <input type="text" name="mailAddress" id="mailAddress" class="form-control" th:value="*{mailAddress}">
 							    </td>
 							  </tr>
 							  <tr>
@@ -115,7 +119,8 @@
 							      郵便番号
 							    </th>
 							    <td>
-							      <span th:text="*{zipCode}"></span>
+							      
+								  <input type="text" name="zipCode" id="zipCode" class="form-control" th:value="*{zipCode}">
 							    </td>
 							  </tr>
 							  <tr>
@@ -123,7 +128,8 @@
 							      住所
 							    </th>
 							    <td>
-							      <span th:text="*{address}"></span>
+							      
+								  <input type="text" name="address" id="address" class="form-control" th:value="*{address}">
 							    </td>
 							  </tr>
 							  <tr>
@@ -131,7 +137,8 @@
 							      電話番号
 							    </th>
 							    <td>
-							      <span th:text="*{telephone}"></span>
+							      
+								  <input type="text" name="telephone" id="telephone" class="form-control" th:value="*{telephone}">
 							    </td>
 							  </tr>
 							  <tr>
@@ -139,7 +146,8 @@
 							      給料
 							    </th>
 							    <td>
-							      <span th:text="*{salary}"></span>
+							      
+								  <input type="text" name="salary" id="salary" class="form-control" th:value="*{salary}">
 							    </td>
 							  </tr>
 							  <tr>
@@ -147,7 +155,8 @@
 							      特性
 							    </th>
 							    <td>
-							      <span th:text="*{characteristics}"></span>
+							      
+								  <input type="text" name="characteristics" id="characteristics" class="form-control" th:value="*{characteristics}">
 							    </td>
 							  </tr>
 							  <tr>
@@ -155,9 +164,6 @@
 							      扶養人数
 							    </th>
 							    <td>
-							    	<label class="error-messages">
-											扶養人数を入力してください
-									</label>
 									<label class="control-label" style="color: red" for="dependentsCount"></label>
 									<input type="hidden" name="id" th:value="*{id}">
 									<input type="text" name="dependentsCount" id="dependentsCount" class="form-control" th:value="*{dependentsCount}">
