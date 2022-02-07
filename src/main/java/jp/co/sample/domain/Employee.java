@@ -35,6 +35,25 @@ public class Employee {
 	}
 	
 
+	public Employee() {
+		super();
+		this.id = id;
+		this.name = name;
+		this.image = image;
+		this.gender = gender;
+		this.hireDate = hireDate;
+		this.mailAddress = mailAddress;
+		this.zipCode = zipCode;
+		this.address = address;
+		this.telephone = telephone;
+		this.salary = salary;
+		this.characteristics = characteristics;
+		this.dependentsCount = dependentsCount;
+	}
+
+	
+
+
 	public Employee(Integer id, String name, String image, String gender, Date hireDate, String mailAddress,
 			String zipCode, String address, String telephone, Integer salary, String characteristics,
 			Integer dependentsCount) {
@@ -52,7 +71,6 @@ public class Employee {
 		this.characteristics = characteristics;
 		this.dependentsCount = dependentsCount;
 	}
-
 
 
 	@Override
