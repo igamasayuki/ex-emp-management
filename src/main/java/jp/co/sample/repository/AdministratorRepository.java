@@ -46,7 +46,7 @@ public class AdministratorRepository {
 	
 	public Administrator findByMailAddressAndPassword(String mail,
 			String pass) {
-		String Sql = "SELRCT * FROM adoministrator WHERE mail=:mail AND pass=:pass;";
+		String Sql = "SELRCT * FROM adoministrator WHERE mail=:mail AND pass=:pass";
 		
 		SqlParameterSource param
 		= new MapSqlParameterSource().addValue("mail",mail);
