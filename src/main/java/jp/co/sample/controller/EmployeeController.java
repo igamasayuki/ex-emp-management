@@ -39,7 +39,7 @@ public class EmployeeController {
 	/**
 	 * 従業員詳細をDBから取ってきて従業員詳細ページにフォワード
 	 *
-	 * @param id ID
+	 * @param id    ID
 	 * @param model リクエストスコープ
 	 * @return 従業員詳細ページ
 	 */
@@ -54,13 +54,12 @@ public class EmployeeController {
 	/**
 	 * 従業員情報を更新
 	 *
-	 * @param id ID
+	 * @param id              ID
 	 * @param dependentsCount 扶養人数
 	 * @return 従業員一覧ページ
 	 */
 	@RequestMapping("update")
-	public String update(@Validated UpdateEmployeeForm updateEmployeeForm, BindingResult result,
-			Model model) {
+	public String update(@Validated UpdateEmployeeForm updateEmployeeForm, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			Employee employee = service.showDetail(Integer.valueOf(updateEmployeeForm.getId()));
 			model.addAttribute("employee", employee);
