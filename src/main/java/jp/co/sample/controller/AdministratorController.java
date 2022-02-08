@@ -5,11 +5,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-<<<<<<< HEAD
-=======
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
->>>>>>> develop
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import jp.co.sample.domain.Administrator;
@@ -38,9 +35,9 @@ public class AdministratorController {
 
 	/**
 	 * ログインページへフォワード
-	 *
 	 * @return ログインページ
 	 */
+	
 	@RequestMapping("/")
 	public String toLogin() {
 		return "administrator/login";
@@ -48,10 +45,10 @@ public class AdministratorController {
 
 	/**
 	 * ログインできるか、メールアドレスとパスワードを使ってユーザ登録確認を行う
-	 *
 	 * @param loginForm ユーザ入力ログイン情報
 	 * @return ログインページ
 	 */
+	
 	@RequestMapping("login")
 	public String login(LoginForm loginForm, Model model) {
 		Administrator admin = service.findByMailAddressAndPassword(loginForm.getMailAddress(),
@@ -66,9 +63,6 @@ public class AdministratorController {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * 従業員を登録
-=======
 	 * ログアウト
 	 *
 	 * @return ログイン画面
@@ -81,10 +75,9 @@ public class AdministratorController {
 
 	/**
 	 * 管理者を登録
->>>>>>> develop
-	 *
 	 * @return 登録完了画面ヘフォワード
 	 */
+	
 	@RequestMapping("/toInsert")
 	public String toInsert() {
 		return "administrator/insert";
@@ -92,19 +85,15 @@ public class AdministratorController {
 
 	/**
 	 * 管理者登録をしてログインフォームへリダイレクト
-	 *
 	 * @param form 管理者受け取りフォーム
 	 * @return ログインフォームページ
 	 */
+	
 	@RequestMapping("/insert")
-<<<<<<< HEAD
-	public String insert(InsertAdministratorForm form) {
-=======
 	public String insert(@Validated InsertAdministratorForm form, BindingResult result) {
 		if (result.hasErrors()) {
 			return "administrator/insert";
 		}
->>>>>>> develop
 		Administrator administrator = new Administrator();
 		BeanUtils.copyProperties(form, administrator);
 		service.insert(administrator);
