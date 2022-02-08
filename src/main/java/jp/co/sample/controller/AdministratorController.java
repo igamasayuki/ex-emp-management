@@ -35,9 +35,9 @@ public class AdministratorController {
 
 	/**
 	 * ログインページへフォワード
-	 *
 	 * @return ログインページ
 	 */
+	
 	@RequestMapping("/")
 	public String toLogin() {
 		return "administrator/login";
@@ -45,10 +45,10 @@ public class AdministratorController {
 
 	/**
 	 * ログインできるか、メールアドレスとパスワードを使ってユーザ登録確認を行う
-	 *
 	 * @param loginForm ユーザ入力ログイン情報
 	 * @return ログインページ
 	 */
+	
 	@RequestMapping("login")
 	public String login(LoginForm loginForm, Model model) {
 		Administrator admin = service.findByMailAddressAndPassword(loginForm.getMailAddress(),
@@ -75,9 +75,9 @@ public class AdministratorController {
 
 	/**
 	 * 管理者を登録
-	 *
 	 * @return 登録完了画面ヘフォワード
 	 */
+	
 	@RequestMapping("/toInsert")
 	public String toInsert() {
 		return "administrator/insert";
@@ -85,10 +85,10 @@ public class AdministratorController {
 
 	/**
 	 * 管理者登録をしてログインフォームへリダイレクト
-	 *
 	 * @param form 管理者受け取りフォーム
 	 * @return ログインフォームページ
 	 */
+	
 	@RequestMapping("/insert")
 	public String insert(@Validated InsertAdministratorForm form, BindingResult result) {
 		if (result.hasErrors()) {

@@ -15,7 +15,6 @@ public class EmployeeService {
 
 	/**
 	 * 従業リストを取得
-	 *
 	 * @return 従業員リスト
 	 */
 	public List<Employee> showList() {
@@ -24,7 +23,6 @@ public class EmployeeService {
 
 	/**
 	 * 従業員詳細を返す
-	 *
 	 * @param id ID
 	 * @return 従業員情報
 	 */
@@ -34,10 +32,10 @@ public class EmployeeService {
 
 	/**
 	 * 従業員情報を更新
-	 * 
 	 * @param employee 従業員情報
 	 */
 	public void update(Employee employee) {
 		repository.update(employee);
 	}
 }
+
