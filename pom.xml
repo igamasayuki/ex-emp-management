@@ -8,7 +8,7 @@
 		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>jp.co.sample</groupId>
 	<artifactId>ex-emp-management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
