@@ -1,5 +1,7 @@
 package com.example.domain;
 
+import java.sql.Date;
+
 public class Employee {
 	
 //	**ID*
@@ -15,7 +17,7 @@ public class Employee {
 	private String gender;
 	
 //	**入社日*
-	private java.util.Date hireDate;
+	private Date hireDate;
 	
 //	**メールアドレス*
 	private String mailAddress;
@@ -68,14 +70,6 @@ public class Employee {
 
 	public void setGender(String gender) {
 		this.gender = gender;
-	}
-
-	public java.util.Date getHireDate() {
-		return hireDate;
-	}
-
-	public void setHireDate(java.util.Date hireDate) {
-		this.hireDate = hireDate;
 	}
 
 	public String getMailAddress() {
@@ -132,6 +126,14 @@ public class Employee {
 
 	public void setDependentsCount(Integer dependentsCount) {
 		this.dependentsCount = dependentsCount;
+	}
+
+	public Date getHireDate() {
+		return hireDate;
+	}
+
+	public void setHireDate(Date hireDate) {
+		this.hireDate = hireDate;
 	}
 
 	@Override
