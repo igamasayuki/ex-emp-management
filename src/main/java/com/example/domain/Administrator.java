@@ -1,6 +1,6 @@
 package com.example.domain;
 
-public class Administrators {
+public class Administrator {
   /** 管理者id */
   private Integer id;
   /** 管理者名 */
@@ -10,10 +10,10 @@ public class Administrators {
   /** 管理者パスワード */
   private String password;
 
-  public Administrators() {
+  public Administrator() {
   }
 
-  public Administrators(Integer id, String name, String mailAddress, String password) {
+  public Administrator(Integer id, String name, String mailAddress, String password) {
     this.id = id;
     this.name = name;
     this.mailAddress = mailAddress;
