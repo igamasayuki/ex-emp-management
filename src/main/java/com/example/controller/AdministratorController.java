@@ -53,6 +53,6 @@ public class AdministratorController {
      */
     @GetMapping("/")
     public String toLogin(LoginForm loginForm) {
-        return "administrator/toLogin";
+        return "administrator/login";
     }
 }
