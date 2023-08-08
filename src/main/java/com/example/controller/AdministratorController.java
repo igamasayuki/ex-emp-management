@@ -21,6 +21,6 @@ public class AdministratorController {
     @GetMapping("/toInsert")
     public String toInsert(InsertAdministratorForm insertAdministratorForm) {
         
-        return "insert";
+        return "administrator/insert";
     }
 }
