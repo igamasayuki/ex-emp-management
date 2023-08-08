@@ -21,6 +21,11 @@ public class Employee {
     private String address;
     /** 電話番号 */
     private Integer telephone;
+    /** 給料 */
+    private Integer salary;
+    /** 扶養家族数 */
+    private Integer dependentsCount;
+
     public Integer getId() {
         return id;
     }
@@ -75,10 +80,22 @@ public class Employee {
     public void setTelephone(Integer telephone) {
         this.telephone = telephone;
     }
+    public Integer getSalary() {
+        return salary;
+    }
+    public void setSalary(Integer salary) {
+        this.salary = salary;
+    }
+    public Integer getDependentsCount() {
+        return dependentsCount;
+    }
+    public void setDependentsCount(Integer dependentsCount) {
+        this.dependentsCount = dependentsCount;
+    }
     @Override
     public String toString() {
         return "Employee [id=" + id + ", name=" + name + ", image=" + image + ", gender=" + gender + ", hireDate="
                 + hireDate + ", mailAddress=" + mailAddress + ", zipCode=" + zipCode + ", address=" + address
-                + ", telephone=" + telephone + "]";
+                + ", telephone=" + telephone + ", salary=" + salary + ", dependentsCount=" + dependentsCount + "]";
     }
 }
