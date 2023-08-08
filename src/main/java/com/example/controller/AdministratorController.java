@@ -13,7 +13,11 @@ import com.example.service.AdministratorService;
 public class AdministratorController {
     @Autowired
     private AdministratorService administratorService;
-
+    /**
+     * 管理者登録画面を表示する
+     * @param insertAdministratorForm
+     * @return 管理者登録画面へフォワードする
+     */
     @GetMapping("/toInsert")
     public String toInsert(InsertAdministratorForm insertAdministratorForm) {
         
