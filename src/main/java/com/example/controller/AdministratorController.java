@@ -61,17 +61,25 @@ public class AdministratorController {
     public String toLogin(LoginForm loginForm) {
         return "administrator/login";
     }
-
+    /**
+     * ログインする
+     * 戻り値がnullならログイン失敗、modelへエラーメッセージを格納し、ログイン画面へフォワードする
+     * メールアドレスとパスワードの組み合わせで該当するユーザーが存在する場合、従業員情報一覧へリダイレクトする
+     * @param loginForm リクエストパラメータ(mailAddress, password)
+     * @param model リクエストスコープ
+     * @return 従業員情報一覧へリダイレクトする
+     */
     @PostMapping("/login")
     public String login(LoginForm loginForm, Model model) {
         
+        // AdministratorにServiceのメソッド戻り値を代入する
         Administrator administrator = 
         administratorService.findByMailAddressAndPassword(
             // 受け取ったメールアドレス  パスワード
             loginForm.getMailAddress(), loginForm.getPassword()
             );
 
-        // 戻り値がnullならログイン失敗、modelへエラーメッセージを格納し、ログイン画面へフォワードする
+        // Serviceの戻り値がnullならログイン失敗、modelへエラーメッセージを格納し、ログイン画面へフォワードする
         if (administrator == null) {
             model.addAttribute("errorMessage", "メールアドレスまたはパスワードが不正です");
             return toLogin(loginForm);
@@ -82,8 +90,6 @@ public class AdministratorController {
 
         // 従業員情報一覧へリダイレクトする
         return "redirect:/employee/showList";
-
-
     }
 
 }
