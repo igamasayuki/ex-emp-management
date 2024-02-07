@@ -9,6 +9,14 @@ public class Administrator {
   String mailAddress;
   /** パスワード */
   String password;
+  
+  public Administrator(Integer id, String name, String mailAddress, String password) {
+    this.id = id;
+    this.name = name;
+    this.mailAddress = mailAddress;
+    this.password = password;
+  }
+  
   public Integer getId() {
     return id;
   }
