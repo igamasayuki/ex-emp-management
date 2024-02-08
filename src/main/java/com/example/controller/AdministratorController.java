@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.form.InsertAdministratorForm;
+import com.example.form.LoginForm;
 import com.example.model.Administrator;
 import com.example.service.AdministratorService;
 
@@ -46,6 +47,18 @@ public class AdministratorController {
         service.insert(admin);
 
         return "redirect:/";
+
+    }
+
+    /**
+     * ログインページを表示する.
+     * 
+     * @param form
+     * @return
+     */
+    @GetMapping("/")
+    public String toLogin(LoginForm form) {
+        return "administrator/login";
 
     }
 }
