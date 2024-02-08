@@ -1,6 +1,9 @@
 spring:
   datasource:
-    driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/student
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/emp-management
     username: postgres
     password: postgres
+server:
+  servlet:
+    context-path: /emp-management
