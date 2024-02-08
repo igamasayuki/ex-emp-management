@@ -1,8 +1,11 @@
 package com.example.form;
 
 public class InsertAdministratorForm {
+  /** 名前 */
   String name;
+  /** メールアドレス */
   String mailAddress;
+  /** パスワード */
   String password;
   public String getName() {
     return name;
@@ -24,7 +27,7 @@ public class InsertAdministratorForm {
   }
   @Override
   public String toString() {
-    return "InsertAdministratorForm [name=" + name + ", mailAddress=" + mailAddress + ", password=""]";
+    return "InsertAdministratorForm [name=" + name + ", mailAddress=" + mailAddress + ", password=[********]";
   }
   
 }
