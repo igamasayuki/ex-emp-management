@@ -62,7 +62,10 @@
               <span th:text="${session.administratorName + 'さん'}"
                 >山田さん</span
               >こんにちは！ &nbsp;&nbsp;&nbsp;
-              <a href="../administrator/login.html" class="navbar-link"
+              <a
+                href="../administrator/login.html"
+                class="navbar-link"
+                th:href="@{/logout}"
                 >ログアウト</a
               >
             </p>
@@ -89,7 +92,97 @@
           <div class="well">
             <!-- ここから上を編集する必要はありません -->
 
-            <!-- ここにモックのform要素を貼り付けます -->
+            <form method="post" action="list.html">
+              <fieldset>
+                <legend>従業員情報</legend>
+                <table class="table table-striped">
+                  <tr>
+                    <th nowrap>従業員名</th>
+                    <td>
+                      <span>山田花子</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>写真</th>
+                    <td>
+                      <img src="../../static/img/e2.png" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>性別</th>
+                    <td>
+                      <span>女性</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>入社日</th>
+                    <td>
+                      <span>2012/11/29</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>メールアドレス</th>
+                    <td>
+                      <span>yamada@sample.com</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>郵便番号</th>
+                    <td>
+                      <span>111-1111</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>住所</th>
+                    <td>
+                      <span>東京都新宿区1-1-1</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>電話番号</th>
+                    <td>
+                      <span>090-0000-0000</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>給料</th>
+                    <td>
+                      <span>400000円</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>特性</th>
+                    <td>
+                      <span
+                        >明るく素直な性格です。リーダーシップを発揮します。新卒社員研修の時はグループ開発の時にリーダーを買ってでました。積極性も人間性も抜群です。周りに対する不満も聞いたことがありません。</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>扶養人数</th>
+                    <td>
+                      <label class="error-messages">
+                        扶養人数を入力してください
+                      </label>
+                      <label
+                        class="control-label"
+                        style="color: red"
+                        for="dependentsCount"
+                      ></label>
+                      <input type="hidden" name="id" />
+                      <input
+                        type="text"
+                        name="dependentsCount"
+                        id="dependentsCount"
+                        class="form-control"
+                        value="3"
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <button type="submit" class="btn btn-primary">更新</button>
+              </fieldset>
+            </form>
 
             <!-- ここから下を編集する必要はありません -->
           </div>
@@ -98,9 +191,6 @@
     </div>
     <!-- end container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script
-      src="../../static/js/bootstrap.min.js"
-      th:src="@{/js/bootstrap.min.js}"
-    ></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
   </body>
 </html>

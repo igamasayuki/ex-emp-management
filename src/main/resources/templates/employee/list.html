@@ -62,7 +62,10 @@
               <span th:text="${session.administratorName + 'さん'}"
                 >山田さん</span
               >こんにちは！ &nbsp;&nbsp;&nbsp;
-              <a href="../administrator/login.html" class="navbar-link"
+              <a
+                href="../administrator/login.html"
+                class="navbar-link"
+                th:href="@{/logout}"
                 >ログアウト</a
               >
             </p>
@@ -86,7 +89,56 @@
         >
           <!-- ここから上を編集する必要はありません -->
 
-          <!-- ここにモックのtable要素を貼り付けます -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>従業員名</th>
+                <th>入社日</th>
+                <th>扶養人数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="detail.html">
+                    <span>山田太郎</span>
+                  </a>
+                </td>
+                <td>
+                  <span>2016/12/1</span>
+                </td>
+                <td>
+                  <span>3人</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="detail.html">
+                    <span>山田太郎</span>
+                  </a>
+                </td>
+                <td>
+                  <span>2016/12/1</span>
+                </td>
+                <td>
+                  <span>3人</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="detail.html">
+                    <span>山田太郎</span>
+                  </a>
+                </td>
+                <td>
+                  <span>2016/12/1</span>
+                </td>
+                <td>
+                  <span>3人</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
           <!-- ここから下を編集する必要はありません -->
         </div>
@@ -95,9 +147,6 @@
     <!-- end container -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script
-      src="../../static/js/bootstrap.min.js"
-      th:src="@{/js/bootstrap.min.js}"
-    ></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
   </body>
 </html>
