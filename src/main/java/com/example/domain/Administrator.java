@@ -42,7 +42,6 @@ public class Administrator {
     }
     @Override
     public String toString() {
-        return "Administrator [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
-                + "]";
+        return "Administrator [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ", password=[********]";
     }
 }
