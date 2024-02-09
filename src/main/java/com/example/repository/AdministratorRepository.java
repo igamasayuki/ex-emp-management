@@ -1,5 +1,7 @@
 package com.example.repository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
@@ -24,11 +26,23 @@ public class AdministratorRepository {
      * @param administrator
      */
     public void insert(Administrator administrator) {
-        SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
-        StringBuilder insertQuery = new StringBuilder();
-        insertQuery.append("INSERT INTO administrators(id,name,mail_address,password)");
-        insertQuery.append("VALUES(:id,:name,:mail_address,:password)");
-        template.update(insertQuery.toString(), param);
+		SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
+		String sql = """
+            INSERT INTO 
+                administrators
+                    (
+                        name,
+                        mail_address,
+                        password
+                    )
+            values
+                (
+                    :name,
+                    :mailAddress,
+                    :password
+                 );
+                """;
+		template.update(sql, param);
     }
 
     /**
@@ -39,14 +53,22 @@ public class AdministratorRepository {
      * @return 管理者情報 or NULL
      */
     public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
-        StringBuilder query = new StringBuilder().append("SELECT mail_address,password from administrators");
-        query.append("WHERE mail_address = :mail_address AND password = :password");
-        SqlParameterSource param = new MapSqlParameterSource(query.toString(),ADMINISTRATOR_ROW_MAPPER);
-        Administrator administrator = template.queryForObject(query.toString(), param, ADMINISTRATOR_ROW_MAPPER);
-        if(administrator == null) {
-            return null;
-        } else {
-            return administrator;
-        }
+        String query = """
+            SELECT 
+                mail_address,
+                password 
+            from 
+                administrators 
+            WHERE 
+                mail_address = :mail_address 
+            AND 
+                password = :password
+                """;
+        SqlParameterSource param = new MapSqlParameterSource().addValue("password", password).addValue("mail_address", mailAddress);
+        List<Administrator> administratorList = template.query(query, param, ADMINISTRATOR_ROW_MAPPER);
+		if (administratorList.size() == 0) {
+			return null;
+		}
+		return administratorList.get(0);
     }
 }

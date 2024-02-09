@@ -10,6 +10,7 @@ public class AdministratorController {
     
     @GetMapping({"","/"})
     public String index() {
-        return "administrator/login";
+        System.out.println("test9");
+        return "administrator/insert";
     }
 }
