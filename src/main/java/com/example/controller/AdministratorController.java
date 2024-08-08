@@ -21,7 +21,7 @@ public class AdministratorController {
     @Autowired
     private AdministratorService administratorService;
     /**
-     * 
+     * 管理者情報登録画面に遷移するメソッド
      * @param form 登録フォームオブジェクト
      * @param model モデルオブジェクト
      * @return フォワード先のテンプレート名
@@ -33,7 +33,7 @@ public class AdministratorController {
     }
 
     /**
-     * 
+     * ログイン画面に遷移するメソッド
      * @param form　ログインフォームオブジェクト
      * @param model モデルオブジェクト
      * @return フォワード先のテンプレート名

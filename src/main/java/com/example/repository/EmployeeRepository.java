@@ -49,7 +49,7 @@ public class EmployeeRepository {
     /**
      * 主キーから従業員情報を取得するメソッド
      * 
-     * @param id
+     * @param id 従業員テーブルのid
      * @return 従業員オブジェクト
      */
     public Employee load(Integer id) {

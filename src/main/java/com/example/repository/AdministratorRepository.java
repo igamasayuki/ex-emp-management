@@ -30,7 +30,7 @@ public class AdministratorRepository {
 
     /**
      * 管理者情報を挿入するメソッド
-     * @param administrator
+     * @param administrator 管理者情報
      */
     public void insert(Administrator administrator) {
         String sql = "INSERT INTO administrators (name, mailAddress, password) VALUES (:name, :mailAddress, :password)";
@@ -43,9 +43,9 @@ public class AdministratorRepository {
 
     /**
      * メールアドレスとパスワードから管理者情報を取得するメソッド
-     * @param mailAddress
-     * @param password
-     * @return
+     * @param mailAddress 入力されたメールアドレス
+     * @param password 入力されたパスワード
+     * @return administratorList 管理者情報のリスト
      */
     public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
         String sql = "SELECT * FROM administrators WHERE mailAddress = :mailAddress AND password = :password";
