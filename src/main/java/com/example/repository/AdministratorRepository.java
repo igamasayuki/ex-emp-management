@@ -20,7 +20,7 @@ public class AdministratorRepository {
         Administrator administrator = new Administrator();
         administrator.setId(rs.getInt("id"));
         administrator.setName(rs.getString("name"));
-        administrator.setMailAddress(rs.getString("mailAddress"));
+        administrator.setMailAddress(rs.getString("mail_Address"));
         administrator.setPassword(rs.getString("password"));
         return administrator;
     };
@@ -33,7 +33,7 @@ public class AdministratorRepository {
      * @param administrator 管理者情報
      */
     public void insert(Administrator administrator) {
-        String sql = "INSERT INTO administrators (name, mailAddress, password) VALUES (:name, :mailAddress, :password)";
+        String sql = "INSERT INTO administrators (name, mail_Address, password) VALUES (:name, :mailAddress, :password)";
         Map<String, Object> params = Map.of(
                 "name", administrator.getName(),
                 "mailAddress", administrator.getMailAddress(),
