@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Employee;
@@ -57,5 +58,26 @@ public class EmployeeController {
     model.addAttribute("employee", employee);
 
     return "employee/detail";
+  }
+
+  /**
+   * 従業員詳細情報を更新する.
+   * 
+   * @param form
+   * @return 従業員一覧画面
+   */
+  @PostMapping("/update")
+  public String update(UpdateEmployeeForm form) {
+    int id = Integer.parseInt(form.getId());
+
+    Employee employee = new Employee();
+    employee = employeeService.showDetail(id);
+
+    int inputDependentsCount = Integer.parseInt(form.getDependentsCount());
+    employee.setDependentsCount(inputDependentsCount);
+
+    employeeService.update(employee);
+
+    return "redirect:/employee/showList";
   }
 }
