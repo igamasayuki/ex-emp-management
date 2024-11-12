@@ -10,9 +10,18 @@ import org.springframework.stereotype.Repository;
 
 import com.example.domain.Administrator;
 
+//@Author:金丸天
+//Administratorのリポジトリクラス
+
 @Repository
 public class AdministratorRepository {
 
+    // @param
+    // id=id
+    // name=名前
+    // mailAddress=メールアドレス
+    // password=パスワード
+    // return DBからレコードごとにオブジェクトを生成したリストを返す
     private static final RowMapper<Administrator> Row_Mapper = (rs, i) -> {
         Administrator administrator = new Administrator();
         administrator.setId(rs.getInt("id"));
@@ -22,9 +31,12 @@ public class AdministratorRepository {
         return administrator;
     };
 
+    // template:DBから検索してきたオブジェクトが渡される
     @Autowired
     private NamedParameterJdbcTemplate template;
 
+    // DB上にadministratorのIDが存在しなければ挿入
+    // 存在すれば更新を行う
     public void insert(Administrator administrator) {
 
         SqlParameterSource source = new BeanPropertySqlParameterSource(administrator);
@@ -44,6 +56,8 @@ public class AdministratorRepository {
         }
     }
 
+    // メールアドレスとパスワードでadministrator内に該当のデータがあるか検索し、
+    // 該当するレコードが存在しない場合はnullを返す
     public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
 
         String sql = "SELECT * FROM administrators WHERE mailAddress = :mailAddress AND password = :password";
