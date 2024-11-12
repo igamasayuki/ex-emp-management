@@ -41,13 +41,16 @@ public class AdministratorController {
 
     }
 
+
     // Loginformからリクエストパラメータを受け取る
-    @PostMapping("/")
+    @GetMapping("/")
     public String tologin(LoginForm form,Model model) {
         model.addAttribute("form", form);
         return "administrator/login.html";
     }
 
     
+
+
 
 }
