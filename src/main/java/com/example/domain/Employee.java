@@ -3,7 +3,7 @@ package com.example.domain;
 import java.util.Date;
 
 /**
- * 従業員のドメイン.
+ * 従業員情報を表すドメイン.
  * 
  * @author M.aoki
  * 

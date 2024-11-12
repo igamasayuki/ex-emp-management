@@ -1,7 +1,7 @@
 package com.example.domain;
 
 /**
- * 管理者のドメイン.
+ * 管理者情報を表すドメイン.
  * 
  * @author M.aoki
  * 

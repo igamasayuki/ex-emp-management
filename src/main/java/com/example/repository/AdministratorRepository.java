@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.example.domain.Administrator;
 
 /**
- * administratorsテーブルの操作を行う.
+ * administratorsテーブルを操作するリポジトリ.
  * 
  * @author M.aoki
  * 

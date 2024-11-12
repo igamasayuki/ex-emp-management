@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.example.domain.Employee;
 
 /**
- * employeesテーブルの操作を行う.
+ * employeesテーブルを操作するリポジトリ.
  * 
  * @author M.aoki
  * 
