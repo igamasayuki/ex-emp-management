@@ -14,6 +14,8 @@ import com.example.form.InsertAdministratorForm;
 import com.example.form.LoginForm;
 import com.example.service.AdministratorService;
 
+import jakarta.servlet.http.HttpSession;
+
 /**
  * 管理者登録画面を表示する処理を記述する
  *
@@ -22,6 +24,14 @@ import com.example.service.AdministratorService;
 @Controller
 @RequestMapping("/")
 public class AdministratorController {
+
+    /** セッションスコープ */
+    @Autowired
+    private HttpSession session;
+
+    /** administoratorService */
+    @Autowired
+    private AdministratorService administratorService;
 
     /**
      * InsertAdministratorFormオブジェクトを生成
@@ -42,10 +52,6 @@ public class AdministratorController {
     private LoginForm setUpLoginForm() {
         return new LoginForm();
     }
-
-    /** administoratorService */
-    @Autowired
-    private AdministratorService administratorService;
 
     /**
      * 管理者登録画面を表示する
@@ -99,7 +105,21 @@ public class AdministratorController {
             return toLogin(form);
         }
 
+        session.setAttribute("administratorName", administrator.getName());
+
         return "redirect:/employee/showList";
+    }
+
+    /**
+     * ログアウト処理
+     *
+     * @param form ログインフォーム
+     * @return ログイン画面
+     */
+    @GetMapping("/logout")
+    public String logout(LoginForm form) {
+        session.invalidate();
+        return "redirect:/";
     }
 
 }
