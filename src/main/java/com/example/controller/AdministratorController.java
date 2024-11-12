@@ -83,6 +83,13 @@ public class AdministratorController {
         return "administrator/login";
     }
 
+    /**
+     * ログインをする処理
+     *
+     * @param form  ログインフォーム
+     * @param model モデル
+     * @return 従業員一覧画面(リダイレクト)
+     */
     @PostMapping("/login")
     public String login(LoginForm form, Model model) {
         Administrator administrator = administratorService.login(form.getMailAddress(), form.getPassword());
