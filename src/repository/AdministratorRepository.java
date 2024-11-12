@@ -23,7 +23,7 @@ public class AdministratorRepository {
     /*管理者情報を入力 */
     public void insert(Administarter administarter) {
         sqlParameterSource param = new AdministratorRepository(administarter);
-        String insertSql = "INSERT INTO administarters(id,name,mailAddress,password)" + "VALUES(:id,:name,:mail_address,:password)";
+        String insertSql = "INSERT INTO administarters(id,name,mail_address,password)" + "VALUES(:id,:name,:mailAddress,:password)";
     }
     
     /*メールアドレスを取得 */

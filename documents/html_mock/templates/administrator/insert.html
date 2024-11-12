@@ -40,7 +40,7 @@
           <div class="well">
             <!-- ここから上を編集する必要はありません -->
 
-            <form method="post" action="login.html">
+            <form method="post" action="login.html" th:action="@{/insert}" th:object="${insertAdministatorForm}">
               <fieldset>
                 <legend>
                   管理者登録<br />(システムにログインできる管理者を登録します)
@@ -59,6 +59,7 @@
                         id="name"
                         class="form-control"
                         placeholder="山田太郎"
+                        th:field="*{name}"
                       />
                     </div>
                   </div>
@@ -77,6 +78,7 @@
                         id="mailAddress"
                         class="form-control"
                         placeholder="yamada@mail.com"
+                        th:field="*{mailAddress}"
                       />
                     </div>
                   </div>
@@ -95,6 +97,7 @@
                         id="password"
                         class="form-control"
                         placeholder="password"
+                        th:field="*{password}"
                       />
                     </div>
                   </div>
