@@ -19,6 +19,7 @@ import com.example.domain.Administorator;
 @Repository
 public class AdministratorRepository {
 
+    /** テーブル名 */
     private static final String TABLE_NAME = "administrators";
 
     /** administoratorのロウマッパー */
