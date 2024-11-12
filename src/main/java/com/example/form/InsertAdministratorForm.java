@@ -1,5 +1,7 @@
 package com.example.form;
 
+//@Author:金丸天
+//Administratorのフォームクラスを作成
 public class InsertAdministratorForm {
 
     private String name;
@@ -28,6 +30,12 @@ public class InsertAdministratorForm {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "InsertAdministratorForm [name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
+                + "]";
     }
 
 }
