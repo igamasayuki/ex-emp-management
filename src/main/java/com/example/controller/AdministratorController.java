@@ -2,6 +2,7 @@ package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,7 +17,11 @@ public class AdministratorController {
     private AdministratorService administratorService;
 
     @GetMapping("/toInsert")
-    public String toInsert(InsertAdministratorForm form) {
+    public String toInsert(InsertAdministratorForm form,Model model) {
+        form.setName(form.getName());
+        form.setMailAddress(form.getMailAddress());
+        form.setPasswprd(form.getPasswprd());
+        model.addAttribute("form", form);
         return "administrator/insert";
     }
     
