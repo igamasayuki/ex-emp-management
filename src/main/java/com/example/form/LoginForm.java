@@ -1,20 +1,13 @@
 package com.example.form;
 
 /**
- * 管理者登録画面に対応するフォームクラス
+ * ログイン画面に対応するフォームクラス
  */
-public class InsertAdministratorForm {
+public class LoginForm {
 
-    private String name;
     private String mailAddress;
     private String password;
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
+    
     public String getMailAddress() {
         return mailAddress;
     }
@@ -30,8 +23,7 @@ public class InsertAdministratorForm {
 
     @Override
     public String toString() {
-        return "InsertAdministratorForm [name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
-                + "]";
+        return "LoginForm [mailAddress=" + mailAddress + ", password=" + password + "]";
     }
 
 }
