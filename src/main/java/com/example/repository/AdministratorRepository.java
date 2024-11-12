@@ -63,7 +63,7 @@ public class AdministratorRepository {
       String password) {
 
     String sql = "SELECT id,name,mail_address,password FROM " + TABLE_NAME
-        + "WHERE mail_address = :mailAddress AND password = :password";
+        + " WHERE mail_address = :mailAddress AND password = :password";
 
     SqlParameterSource param = new MapSqlParameterSource()
         .addValue("mailAddress", mailAddress).addValue("password", password);
