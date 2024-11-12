@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Administrator;
 import com.example.form.InsertAdministratorForm;
+import com.example.form.LoginForm;
 import com.example.service.AdministratorService;
 
 /**
@@ -29,6 +30,16 @@ public class AdministratorController {
     @ModelAttribute
     private InsertAdministratorForm setUpInsertAdministratorForm() {
         return new InsertAdministratorForm();
+    }
+
+    /**
+     * LoginFormオブジェクトを生成
+     *
+     * @return LoginFormオブジェクト
+     */
+    @ModelAttribute
+    private LoginForm setUpLoginForm() {
+        return new LoginForm();
     }
 
     /** administoratorService */
@@ -58,4 +69,17 @@ public class AdministratorController {
         administratorService.insert(administrator);
         return "redierct:/";
     }
+
+    /**
+     * ログイン画面を表示する
+     *
+     * @param form ログインフォーム
+     * @return ログイン画面
+     */
+    @GetMapping("/")
+    public String toLogin(LoginForm form) {
+
+        return "administrator/login";
+    }
+
 }
