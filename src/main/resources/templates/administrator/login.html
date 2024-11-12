@@ -46,8 +46,8 @@
                   th:action="@{/login}" th:object="${loginForm}">
               <fieldset>
                 <legend>ログイン</legend>
-                <div th:if="${errorMessage == null}">
-                  <p th:text="${errorMessage}">エラー！</p>
+                <div th:if="${errorMessage}">
+                  <p th:text="${errorMessage}" style="color: red;">エラー！</p>
                 </div>
                 <div class="form-group">
                   <div class="alert alert-danger">
