@@ -52,7 +52,7 @@ public class AdministratorRepository {
 
         if (administrator.getId() == null) {
 
-            String sql = "INSERT INTO administrators (name, mailAddress, password) VALUES (:name, :mailAddress, :password)";
+            String sql = "INSERT INTO administrators (name, mail_address, password) VALUES (:name, :mailAddress, :password)";
 
             template.update(sql, source);
 
