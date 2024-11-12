@@ -10,6 +10,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.domain.Administrator;
 import com.example.form.InsertAdministratorForm;
+import com.example.form.LoginForm;
 import com.example.service.AdministratorService;
 
 @Controller
@@ -20,7 +21,7 @@ public class AdministratorController {
     private AdministratorService administratorService;
 
     @GetMapping("/toInsert")
-    public String toInsert(InsertAdministratorForm form,Model model) {
+    public String toInsert(InsertAdministratorForm form, Model model) {
         form.setName(form.getName());
         form.setMailAddress(form.getMailAddress());
         form.setPassword(form.getPassword());
@@ -29,7 +30,7 @@ public class AdministratorController {
     }
 
     @PostMapping("/insert")
-    public String insert(InsertAdministratorForm form){
+    public String insert(InsertAdministratorForm form) {
         Administrator administrator = new Administrator();
         administrator.setName(form.getName());
         administrator.setMailAddress(form.getMailAddress());
@@ -39,5 +40,12 @@ public class AdministratorController {
         return "redirect:/";
 
     }
-    
+
+    // Loginformからリクエストパラメータを受け取る
+    @PostMapping("/")
+    public String tologin(LoginForm form,Model model) {
+        model.addAttribute("form", form);
+        return "administrator/login.html";
+    }
+
 }
