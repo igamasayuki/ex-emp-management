@@ -1,5 +1,10 @@
 package com.example.form;
 
+/**
+ * @author 金丸天
+ *         登録に必要なリクエストパラメータを受け取る属性
+ */
+
 public class LoginForm {
     private String mailAddress;
     private String password;
