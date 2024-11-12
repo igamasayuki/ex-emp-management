@@ -62,7 +62,8 @@
               <span th:text="${session.administratorName + 'さん'}"
                 >山田さん</span
               >こんにちは！ &nbsp;&nbsp;&nbsp;
-              <a href="../administrator/login.html" class="navbar-link"
+              <a href="../administrator/login.html" 
+                th:href="@{/logout}" class="navbar-link"
                 >ログアウト</a
               >
             </p>
