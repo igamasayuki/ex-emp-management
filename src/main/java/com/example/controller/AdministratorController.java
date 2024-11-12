@@ -94,4 +94,17 @@ public class AdministratorController {
 
     return "redirect:/employee/showList";
   }
+
+  /**
+   * ログアウトする.
+   * 
+   * @param form
+   * @return ログイン画面
+   */
+  @GetMapping("/logout")
+  public String logout(LoginForm form) {
+    session.invalidate();
+
+    return "redirect:/";
+  }
 }
