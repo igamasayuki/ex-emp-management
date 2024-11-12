@@ -1,3 +1,4 @@
+
 package com.example.form;
 public class InsertAdministratorForm {
     /*名前 */

@@ -9,6 +9,9 @@ import com.example.domain.Administrator;
 import com.example.domain.Employee;
 import com.example.repository.AdministratorRepository;
 
+/**
+ * @author harasawakana
+ */
 @Service
 @Transactional
 
@@ -16,9 +19,13 @@ public class AdministratorService {
     @Autowired
     private AdministratorRepository repository;
 
-    // public void insert(Administrator administrato) {
-    //     return repository.insert(administrato);
-    // }
+    public Administrator login(String mailAddress,  String password) {
+        return repository.findByMailAddressAndPassword(mailAddress, password);
+    }
+
+    public void insert(Administrator administrator) {
+        repository.insert(administrator);
+    }
 
     // public List<Employee> findAll() {
     //     return repository.findAll();

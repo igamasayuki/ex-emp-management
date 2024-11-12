@@ -34,7 +34,7 @@ public class AdministratorRepository {
         String insertSql = "INSERT INTO administarters(id,name,mail_address,password) VALUES(:id,:name,:mailAddress,:password)";
     }
     
-    /*メールアドレスを取得 */
+    /*メールアドレスとパスワードを取得 */
     public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
         String sql = "SELECT id, name, mail_address, password FROM administarters WHERE mail_address=:mailAddress, password=:password;";
         SqlParameterSource param = new MapSqlParameterSource().addValue("mailAddress",mailAddress).addValue("password", password);

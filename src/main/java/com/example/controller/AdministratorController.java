@@ -19,5 +19,5 @@ public class AdministratorController {
         InsertAdministratorForm form = new InsertAdministratorForm();
         return "administrator/insert";
     }
-
+    
 }
