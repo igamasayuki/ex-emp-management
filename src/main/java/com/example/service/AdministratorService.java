@@ -25,7 +25,14 @@ public class AdministratorService {
         repository.insert(administrator);
     }
 
-    public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
-        return findByMailAddressAndPassword(mailAddress, password);
+    /**
+     * メールアドレスとパスワードを受け取り、リポジトリを通じて管理者情報を表示
+     * @param mailAddress
+     * @param password
+     * @return 検索された管理者情報
+     */
+    public Administrator login(String mailAddress, String password) {
+        Administrator administrator = repository.findByMailAddressAndPassword(mailAddress, password);
+        return administrator;
     }
 }
