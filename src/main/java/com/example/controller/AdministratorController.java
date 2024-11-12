@@ -3,6 +3,7 @@ package com.example.controller;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -80,6 +81,18 @@ public class AdministratorController {
     public String toLogin(LoginForm form) {
 
         return "administrator/login";
+    }
+
+    @PostMapping("/login")
+    public String login(LoginForm form, Model model) {
+        Administrator administrator = administratorService.login(form.getMailAddress(), form.getPassword());
+
+        if (administrator == null) {
+            model.addAttribute("message", "メールアドレスまたはパスワードが不正です。");
+            return toLogin(form);
+        }
+
+        return "redirect:/employee/showList";
     }
 
 }
