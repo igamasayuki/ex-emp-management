@@ -8,7 +8,7 @@ import com.example.domain.Administrator;
 import com.example.repository.AdministratorRepository;
 
 /**
- * 管理者情報を操作するサービス.
+ * 管理者関連機能の業務処理を行うサービス.
  * 
  * @author M.aoki
  * 
