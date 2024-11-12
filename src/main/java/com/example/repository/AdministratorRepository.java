@@ -29,14 +29,18 @@ public class AdministratorRepository {
 
     // 管理者情報を挿入するメソッド
     public void insert(Administrator administrator) {
-        String sql = "INSERT INTO administrators (mail_address, password) VALUES (:mailAddress, :password)";
-        Map<String, Object> params = new HashMap<>();
-        params.put("mailAddress", administrator.getMailAddress());
-        params.put("password", administrator.getPassword());
-        template.update(sql, params);
+        String sql = "INSERT INTO administrators (name,mail_address, password) VALUES (:name, :mailAddress, :password)";
+        // パラメータをマップにセット
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("name", administrator.getName()); // name をパラメータとして追加
+        paramMap.put("mailAddress", administrator.getMailAddress());
+        paramMap.put("password", administrator.getPassword());
+
+        // NamedParameterJdbcTemplate でクエリを実行
+        template.update(sql, paramMap);
     }
 
-    //メールアドレスとパスワードから管理者情報を取得するメソッド
+    // メールアドレスとパスワードから管理者情報を取得するメソッド
     public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
         String sql = "SELECT * FROM administrators WHERE mail_address = :mailAddress AND password = :password";
         Map<String, Object> params = new HashMap<>();

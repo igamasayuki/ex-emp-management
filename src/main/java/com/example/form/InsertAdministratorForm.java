@@ -8,7 +8,7 @@ public class InsertAdministratorForm {
     private String mailAddress;
 
     // パスワードを受け取る
-    private String passwprd;
+    private String password;
 
     public String getName() {
         return name;
@@ -26,17 +26,17 @@ public class InsertAdministratorForm {
         this.mailAddress = mailAddress;
     }
 
-    public String getPasswprd() {
-        return passwprd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswprd(String passwprd) {
-        this.passwprd = passwprd;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
-        return "InsertAdministratorForm [name=" + name + ", mailAddress=" + mailAddress + ", passwprd=" + passwprd
+        return "InsertAdministratorForm [name=" + name + ", mailAddress=" + mailAddress + ", passwprd=" + password
                 + "]";
     }
 

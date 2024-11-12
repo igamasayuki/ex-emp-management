@@ -14,8 +14,9 @@ public class AdministratorService {
     @Autowired
     private AdministratorRepository administratorRepository;
 
-    public void insert(Administrator administrator){
-        
+    // 管理者情報を挿入するメソッド
+    public void insert(Administrator administrator) {
+        administratorRepository.insert(administrator);
     }
 
     
