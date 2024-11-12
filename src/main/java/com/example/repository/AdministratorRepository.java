@@ -68,7 +68,7 @@ public class AdministratorRepository {
         // クエリ作成
         String sql = String.format("""
                     SELECT id, name, mail_address, password FROM %s
-                    WHERE mailAddress = :mailAddress AND password = :password;
+                    WHERE mail_address = :mailAddress AND password = :password;
                 """, TABLE_NAME);
 
         // パラメータ作成
