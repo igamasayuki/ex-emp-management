@@ -1,24 +1,14 @@
-package com.example.domain;
+package com.example.form;
 
 /**
- * administratorsテーブルに対応するドメインクラス
+ * Administratorコントローラに対応するフォームクラス
  */
-public class Administrator {
+public class InsertAdministratorForm {
 
-    private Integer id;
     private String name;
     private String mailAddress;
     private String password;
-    
-    public Administrator() {
-    }
 
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
     public String getName() {
         return name;
     }
@@ -37,10 +27,10 @@ public class Administrator {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     @Override
     public String toString() {
-        return "Administrator [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
+        return "InsertAdministratorForm [name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
                 + "]";
     }
 
