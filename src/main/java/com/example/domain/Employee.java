@@ -2,6 +2,9 @@ package com.example.domain;
 
 import java.util.Date;
 
+/**
+ * employeesテーブルに対応するドメインクラス
+ */
 public class Employee {
 
     private Integer id;

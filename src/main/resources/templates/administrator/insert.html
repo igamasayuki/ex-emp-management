@@ -51,7 +51,7 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-12">
-                      <label for="name" th:field="*{name}"> 氏名: </label>
+                      <label for="name"> 氏名: </label>
                       <label class="error-messages">
                         氏名を入力してください
                       </label>
@@ -61,6 +61,7 @@
                         id="name"
                         class="form-control"
                         placeholder="山田太郎"
+                        th:field="*{name}"
                       />
                     </div>
                   </div>
