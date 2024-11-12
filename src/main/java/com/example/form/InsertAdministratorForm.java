@@ -1,10 +1,5 @@
-/**
- * @author harasawakana
- */
-
-public class Administrator {
-    /*ID */
-    private Integer id;
+package com.example.form;
+public class InsertAdministratorForm {
     /*名前 */
     private String name;
     /*メールアドレス */
@@ -12,12 +7,6 @@ public class Administrator {
     /*パスワード */
     private String password;
 
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
     public String getName() {
         return name;
     }
@@ -39,9 +28,8 @@ public class Administrator {
 
     @Override
     public String toString() {
-        return "Administrator [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
+        return "InsertAdministratorForm [name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
                 + "]";
-    }
+    }  
 
-    
 }
