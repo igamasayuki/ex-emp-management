@@ -35,6 +35,15 @@ public class EmployeeController {
     return "employee/list";
   }
 
+  /**
+   * 従業員情報を取得する.
+   * 
+   * @param id
+   * @param model
+   * @param form
+   * @return 従業員詳細情報
+   */
+  @GetMapping("/showDetail")
   public String showDetail(
       String id,
       Model model,

@@ -90,7 +90,7 @@
             <!-- ここから上を編集する必要はありません -->
 
             <!-- ここにモックのform要素を貼り付けます -->
-            <form method="post" action="list.html">
+            <form method="post" action="list.html" th:object="${employee}">
               <fieldset>
                 <legend>従業員情報</legend>
                 <table class="table table-striped">
@@ -103,7 +103,7 @@
                   <tr>
                     <th nowrap>写真</th>
                     <td>
-                      <img src="../../static/img/e2.png" th:src="${employee.image}"/>
+                      <img src="../../static/img/e2.png" th:src="@{'/img/' + ${employee.image}}"/>
                     </td>
                   </tr>
                   <tr>
@@ -167,14 +167,14 @@
                         style="color: red"
                         for="dependentsCount"
                       ></label>
-                      <input type="hidden" name="id" th:text="${employee.dependentsCount}"/>
+                      <input type="hidden" name="id" th:field="*{dependentsCount}"/>
                       <input
                         type="text"
                         name="dependentsCount"
                         id="dependentsCount"
                         class="form-control"
                         value="3"
-                        th:text="${employee.dependentsCount}"
+                        th:field="*{dependentsCount}"
                       />
                     </td>
                   </tr>
