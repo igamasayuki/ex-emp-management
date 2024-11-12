@@ -25,4 +25,18 @@ public class AdministratorService {
         administratorRepository.insert(administrator);
     }
 
+    /**
+     * メールアドレスとパスワードでadministrator内に該当のデータがあるか検索し、
+     * 該当するレコードが存在しない場合はnullを返す
+     * 
+     * @param mailAddress
+     * @param password
+     * @return
+     */
+    public Administrator login(String mail, String password) {
+        Administrator administrator = administratorRepository.findByMailAddressAndPassword(mail, password);
+        System.out.println(administrator);
+        return administrator;
+    }
+
 }

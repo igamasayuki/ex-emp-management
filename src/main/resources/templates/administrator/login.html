@@ -45,7 +45,7 @@
                 <legend>ログイン</legend>
                 <div class="form-group">
                   <div class="alert alert-danger">
-                    <p>メールアドレスまたはパスワードが間違っています</p>
+                    <span th:if="${errorMessage}">メールアドレスまたはパスワードが間違っています</span>
                   </div>
                 </div>
                 <div class="form-group">
