@@ -46,6 +46,9 @@
                   th:action="@{/login}" th:object="${loginForm}">
               <fieldset>
                 <legend>ログイン</legend>
+                <div th:if="${errorMessage == null}">
+                  <p th:text="${errorMessage}">エラー！</p>
+                </div>
                 <div class="form-group">
                   <div class="alert alert-danger">
                     <p>メールアドレスまたはパスワードが間違っています</p>

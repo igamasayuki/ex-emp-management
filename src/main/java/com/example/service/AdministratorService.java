@@ -32,7 +32,8 @@ public class AdministratorService {
   /**
    * ログインをする業務処理を行う.
    * 
-   * @param mailAddress, password
+   * @param mailAddress
+   * @param password
    * @return administrator
    */
   public Administrator login(String mailAddress, String password) {
