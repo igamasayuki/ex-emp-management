@@ -17,6 +17,10 @@ public class AdministratorService {
     @Autowired
     private AdministratorRepository repository;
 
+    /**
+     * 管理者情報をリポジトリを通じて追加
+     * @param administrator 管理者情報
+     */
     public void insert(Administrator administrator) {
         repository.insert(administrator);
     }
