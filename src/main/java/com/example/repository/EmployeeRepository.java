@@ -50,7 +50,7 @@ public class EmployeeRepository {
         employee.setTelephone(rs.getString("telephone"));
         employee.setSalary(rs.getInt("salary"));
         employee.setCharacteristics(rs.getString("characteristics"));
-        employee.setDepaendentsCount(rs.getInt("dependents_count"));
+        employee.setDependentsCount(rs.getInt("dependents_count"));
         return employee;
 
     };

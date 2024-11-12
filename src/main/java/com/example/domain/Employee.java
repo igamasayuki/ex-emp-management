@@ -20,10 +20,7 @@ public class Employee {
     private String telephone;
     private Integer salary;
     private String characteristics;
-    private Integer depaendentsCount;
-
-    public Employee() {
-    }
+    private Integer dependentsCount;
 
     public Integer getId() {
         return id;
@@ -113,17 +110,25 @@ public class Employee {
         this.characteristics = characteristics;
     }
 
-    public Integer getDepaendentsCount() {
-        return depaendentsCount;
+    public Integer getDependentsCount() {
+        return dependentsCount;
     }
 
-    public void setDepaendentsCount(Integer depaendentsCount) {
-        this.depaendentsCount = depaendentsCount;
+    public void setDependentsCount(Integer dependentsCount) {
+        this.dependentsCount = dependentsCount;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", name=" + name + ", image=" + image + ", gender=" + gender + ", hireDate="
+                + hireDate + ", mailAddress=" + mailAddress + ", zipCode=" + zipCode + ", address=" + address
+                + ", telephone=" + telephone + ", salary=" + salary + ", characteristics=" + characteristics
+                + ", dependentsCount=" + dependentsCount + "]";
     }
 
     public Employee(Integer id, String name, String image, String gender, Date hireDate, String mailAddress,
             String zipCode, String address, String telephone, Integer salary, String characteristics,
-            Integer depaendentsCount) {
+            Integer dependentsCount) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -135,15 +140,10 @@ public class Employee {
         this.telephone = telephone;
         this.salary = salary;
         this.characteristics = characteristics;
-        this.depaendentsCount = depaendentsCount;
+        this.dependentsCount = dependentsCount;
     }
 
-    @Override
-    public String toString() {
-        return "Employee [id=" + id + ", name=" + name + ", image=" + image + ", gender=" + gender + ", hireDate="
-                + hireDate + ", mailAddress=" + mailAddress + ", zipCode=" + zipCode + ", address=" + address
-                + ", telephone=" + telephone + ", salary=" + salary + ", characteristics=" + characteristics
-                + ", depaendentsCount=" + depaendentsCount + "]";
+    public Employee() {
     }
 
 }
