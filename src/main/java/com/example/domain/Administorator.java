@@ -22,6 +22,13 @@ public class Administorator {
     public Administorator() {
     }
 
+    public Administorator(Integer iD, String name, String mailAddress, String password) {
+        ID = iD;
+        this.name = name;
+        this.mailAddress = mailAddress;
+        this.password = password;
+    }
+
     public Integer getID() {
         return ID;
     }
