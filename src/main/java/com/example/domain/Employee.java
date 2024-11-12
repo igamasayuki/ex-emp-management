@@ -1,7 +1,6 @@
 package com.example.domain;
 
-import java.time.LocalDate;
-
+import java.sql.Date;
 import jakarta.validation.constraints.Email;
 
 public class Employee {
@@ -15,10 +14,10 @@ public class Employee {
     private String image;
 
     /** 従業員の性別 */
-    private Gender gender;
+    private String gender;
 
     /** 入社日 */
-    private LocalDate hireDate;
+    private Date hireDate;
 
     /** メールアドレス */
     @Email
@@ -41,11 +40,6 @@ public class Employee {
 
     /** 扶養人数 */
     private Integer dependentsCount;
-
-    /** 性別のenum */
-    public enum Gender {
-        MALE, FEMALE, OTHER
-    }
 
     public Integer getId() {
         return id;
@@ -71,19 +65,19 @@ public class Employee {
         this.image = image;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public LocalDate getHireDate() {
+    public Date getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(LocalDate hireDate) {
+    public void setHireDate(Date hireDate) {
         this.hireDate = hireDate;
     }
 
@@ -151,7 +145,7 @@ public class Employee {
                 + dependentsCount + "]";
     }
 
-    public Employee(Integer id, String name, String image, Gender gender, LocalDate hireDate, @Email String email,
+    public Employee(Integer id, String name, String image, String gender, Date hireDate, @Email String email,
             String zipCode, String address, String telephone, Integer salary, String characteristics,
             Integer dependentsCount) {
         this.id = id;
@@ -166,6 +160,9 @@ public class Employee {
         this.salary = salary;
         this.characteristics = characteristics;
         this.dependentsCount = dependentsCount;
+    }
+
+    public Employee() {
     }
 
 }
