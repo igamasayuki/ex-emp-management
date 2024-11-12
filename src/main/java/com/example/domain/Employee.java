@@ -2,9 +2,10 @@ package com.example.domain;
 
 import java.util.Date;
 
-//@Auther :金丸天
-//Employeeに関する情報を格納するクラス
-//
+/**
+ * @Auther :金丸天
+ *         Employeeに関する情報を格納するクラス
+ */
 
 public class Employee {
 

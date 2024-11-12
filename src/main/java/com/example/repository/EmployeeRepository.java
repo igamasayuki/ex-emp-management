@@ -12,26 +12,31 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import com.example.domain.Employee;
 
-// @Author:金丸天
-// Employeeのリポジトリクラス
+/**
+ * @Author:金丸天
+ *             Employeeのリポジトリクラス
+ */
 
 @Repository
 public class EmployeeRepository {
 
-    // @param
-    // id=id
-    // name=名前
-    // image=画像
-    // gender=性別
-    // hireDate=誕生日
-    // mailAddress=メールアドレス
-    // zipCode=郵便番号
-    // address=住所
-    // telephone=電話番号
-    // salary=給与
-    // characteristics=特製
-    // dependentsCount=扶養人数
-    // return DBからレコードごとにオブジェクトを生成したリストを返す
+    /**
+     * @param
+     * id=id
+     *              name=名前
+     *              image=画像
+     *              gender=性別
+     *              hireDate=誕生日
+     *              mailAddress=メールアドレス
+     *              zipCode=郵便番号
+     *              address=住所
+     *              telephone=電話番号
+     *              salary=給与
+     *              characteristics=特製
+     *              dependentsCount=扶養人数
+     *              return DBからレコードごとにオブジェクトを生成したリストを返す
+     */
+
     private static final RowMapper<Employee> ROW_MAPPER = (rs, i) -> {
         Employee employee = new Employee();
         employee.setId(rs.getInt("id"));
@@ -50,11 +55,15 @@ public class EmployeeRepository {
 
     };
 
-    // template:DBから検索してきたオブジェクトが渡される
+    /**
+     * template:DBから検索してきたオブジェクトが渡される
+     */
     @Autowired
     private NamedParameterJdbcTemplate template;
 
-    // DB上にemployeeのオブジェクトを全て返す
+    /**
+     * DB上にemployeeのオブジェクトを全て返す
+     */
     public List<Employee> findAll() {
 
         String sql = "SELECT * FROM employees";
@@ -63,7 +72,9 @@ public class EmployeeRepository {
 
     }
 
-    // idでemployeeのオブジェクトを1件返す
+    /**
+     * idでemployeeのオブジェクトを1件返す
+     */
     public Employee load(Integer id) {
 
         String sql = "SELECT * FROM employees WHERE id = :id";
