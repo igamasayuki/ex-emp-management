@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link
+    rel="stylesheet"
+    href="../../static/css/bootstrap.css"
+    th:href="@{/css/bootstrap.css}"
+  />
+  <link
+    rel="stylesheet"
+    href="../../static/css/style.css"
+    th:href="@{/css/style.css}"
+    />
+</head>
+<body>
+    <div class="row" th:fragment="header">
+        <div class="col-lg-offset-0 col-lg-6 col-md-8 col-sm-10 col-xs-12">
+          <img
+            src="../../static/img/header_logo.png"
+            th:src="@{/img/header_logo.png}"
+          />
+        </div>
+      </div>
+<div th:fragment="footer">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+  </div>
+</body>
+</html>
