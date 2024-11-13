@@ -3,7 +3,9 @@ package com.example.domain;
  * @author harasawakana
  * 
  */
-
+ /**
+  * 従業員情報を表すドメインクラス employeesテーブルに対応
+  */
 public class Employee {
     /**ID */
     private Integer id;

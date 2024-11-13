@@ -1,5 +1,9 @@
 package com.example.form;
 
+/**
+ * @author harasawakana
+ */
+
 /**従業員情報を更新時にしようするform */
 public class UpdateEmployeeForm {
     /** 従業員ID */

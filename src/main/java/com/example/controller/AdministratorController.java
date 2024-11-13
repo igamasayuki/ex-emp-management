@@ -18,6 +18,10 @@ import jakarta.servlet.http.HttpSession;
  * @author harasawakana
  */
 
+ /**
+  * 管理者関連機能の処理の制御を⾏う
+  */
+
 @Controller
 @RequestMapping("")
 
@@ -55,6 +59,7 @@ public class AdministratorController {
     public String login(LoginForm form, Model model) {
         Administrator administrator = administratorService.login(form.getMailAddress(), form.getPassword());
         
+        /**メールアドレスまたはパスワードがnullだった場合にエラーメッセージを表示、ログイン出来たらリストの表示 */
         if(administrator == null) {
             model.addAttribute("errorMessage", "メールアドレスまたはパスワードが不正です。");
             return "administrator/login";

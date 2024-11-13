@@ -9,6 +9,10 @@ import com.example.repository.EmployeeRepository;
 
 /**@author harasawa */
 
+/**
+ * employeesテーブルを 操作するリポジトリ 
+ */
+
 @Service
 @Transactional
 

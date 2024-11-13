@@ -13,6 +13,9 @@ import com.example.domain.Administrator;
 import com.example.domain.Employee;
 import com.example.repository.AdministratorRepository;
 
+/**
+ * administratorsテーブルを操作するリポジトリ
+ */
 
 @Service
 @Transactional

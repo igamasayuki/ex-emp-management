@@ -2,6 +2,10 @@ package com.example.domain;
 /**
  * @author harasawakana
  */
+/**
+ * 管理者情報を表すドメインクラス 
+administratorsテーブルに対応 
+ */
 
 public class Administrator {
     /**ID */
