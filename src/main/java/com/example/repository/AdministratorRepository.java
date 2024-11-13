@@ -45,7 +45,7 @@ public class AdministratorRepository {
 
         // クエリ作成
         String sql = String.format(
-                "INSERT INTO %s(name, mailAddress, password) VALUES(:name, :mailAddress, :password);",
+                "INSERT INTO %s(name, mail_address, password) VALUES(:name, :mailAddress, :password);",
                 TABLE_NAME);
 
         // パラメータ作成
@@ -67,8 +67,8 @@ public class AdministratorRepository {
 
         // クエリ作成
         String sql = String.format("""
-                    SELECT id, name, mailAddress, password FROM %s
-                    WHERE mailAddress = :mailAddress AND password = :password;
+                    SELECT id, name, mail_address, password FROM %s
+                    WHERE mail_address = :mailAddress AND password = :password;
                 """, TABLE_NAME);
 
         // パラメータ作成

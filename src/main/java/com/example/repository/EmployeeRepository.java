@@ -120,7 +120,7 @@ public class EmployeeRepository {
                     telephone = :telephone,
                     salary = :salary,
                     characteristics = :characteristics,
-                    dependents_count = :dependents_count
+                    dependents_count = :dependentsCount
                 WHERE
                     id = :id;
                 """, TABLE_NAME);
