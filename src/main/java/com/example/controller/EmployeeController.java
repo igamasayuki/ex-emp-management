@@ -2,6 +2,7 @@ package com.example.controller;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,12 +73,19 @@ public class EmployeeController {
     @PostMapping("/update")
     public String update(@Validated UpdateEmployeeForm form, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            System.out.println(form);
+            System.out.println(result.hasErrors());
+            System.out.println(result);
             return showDetail(form.getId(), model, form);
+
         }
 
         Integer EmId = Integer.parseInt(form.getId());
         Employee employee = employeeService.showDetail(EmId);
+        form.getId();
         employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));
+        BeanUtils.copyProperties(form, employee);
+
         employeeService.update(employee);
         return "redirect:/employee/showList";
 

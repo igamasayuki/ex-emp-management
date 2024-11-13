@@ -2,6 +2,8 @@ package com.example.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * @Auther :金丸天
  *         Employeeに関する情報を格納するクラス
@@ -13,6 +15,7 @@ public class Employee {
     private String name;
     private String image;
     private String gender;
+
     private Date hireDate;
     private String mailAddress;
     private String zipCode;
