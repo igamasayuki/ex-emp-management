@@ -14,12 +14,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Employee;
+import com.example.form.LoginForm;
 import com.example.form.UpdateEmployeeForm;
 import com.example.service.EmployeeService;
 
+import jakarta.servlet.http.HttpSession;
+
+/**
+ * 従業員関連画面を表示する処理を記述する
+ *
+ * @author T.Araki
+ */
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
+
+    /** セッションスコープ */
+    @Autowired
+    private HttpSession session;
 
     /** employeeService */
     @Autowired
@@ -36,6 +48,16 @@ public class EmployeeController {
     }
 
     /**
+     * LoginFormオブジェクトの作成
+     *
+     * @return LoginFormオブジェクト
+     */
+    @ModelAttribute
+    private LoginForm setUpUpdateLoginForm() {
+        return new LoginForm();
+    }
+
+    /**
      * 従業員一覧を出力する
      *
      * @param model モデル
@@ -43,6 +65,9 @@ public class EmployeeController {
      */
     @GetMapping("/showList")
     public String showList(Model model) {
+        if (session.getAttribute("administratorName") == null) {
+            return "forward:/";
+        }
         model.addAttribute("employeeList", employeeService.showList());
         return "employee/list";
     }
@@ -56,6 +81,9 @@ public class EmployeeController {
      */
     @GetMapping("/showDetail")
     public String showDetail(String id, Model model, UpdateEmployeeForm form) {
+        if (session.getAttribute("administratorName") == null) {
+            return "forward:/";
+        }
         model.addAttribute("employee", employeeService.showDetail(Integer.parseInt(id)));
         return "employee/detail";
     }
@@ -68,6 +96,9 @@ public class EmployeeController {
      */
     @PostMapping("/update")
     public String update(@Validated UpdateEmployeeForm form, BindingResult result, Model model) {
+        if (session.getAttribute("administratorName") == null) {
+            return "forward:/";
+        }
         if (result.hasErrors()) {
             return showDetail(form.getId(), model, form);
         }
