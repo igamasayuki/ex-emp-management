@@ -4,13 +4,13 @@ package com.example.domain;
  */
 
 public class Administrator {
-    /*ID */
+    /**ID */
     private Integer id;
-    /*名前 */
+    /**名前 */
     private String name;
-    /*メールアドレス */
+    /**メールアドレス */
     private String mailAddress;
-    /*パスワード */
+    /**パスワード */
     private String password;
 
     public Integer getId() {
