@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * @Author: 金丸天
@@ -15,19 +16,27 @@ import jakarta.validation.constraints.NotBlank;
 public class UpdateEmployeeForm {
 
     private String id;
-    @NotBlank(message = "値が空欄になっています")
+    @NotBlank(message = "扶養人数が空欄になっています")
     private String dependentsCount;
-
+    @NotBlank(message = "名前が空欄になっています")
     private String name;
     private String image;
+    @NotBlank(message = "性別が空欄になっています")
     private String gender;
+    @NotBlank(message = "入社日が空欄になっています")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date hireDate;
+    @NotBlank(message = "メールアドレスが空欄になっています")
     private String mailAddress;
+    @NotBlank(message = "番地が空欄になっています")
     private String zipCode;
+    @NotBlank(message = "住所空欄になっています")
     private String address;
+    @NotBlank(message = "電話番号が空欄になっています")
     private String telephone;
+    @NotNull(message = "給与を入力してください")
     private Integer salary;
+    @NotBlank(message = "値が空欄になっています")
     private String characteristics;
 
     public String getId() {
