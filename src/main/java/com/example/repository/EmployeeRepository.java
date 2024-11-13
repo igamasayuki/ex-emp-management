@@ -26,7 +26,6 @@ public class EmployeeRepository {
         employee.setImage(rs.getString("image"));
         employee.setGender(rs.getString("gender"));
         employee.setHireDate(rs.getDate("hire_date"));
-        employee.setAddress(rs.getString("addres"));
         employee.setZipCode(rs.getString("zip_code"));
         employee.setAddress(rs.getString("address"));
         employee.setTelephone(rs.getString("telephone"));
@@ -63,7 +62,7 @@ public class EmployeeRepository {
                 "salary = :salary, " +
                 "characteristics = :characteristics, " +
                 "dependents_count = :dependents_count " +
-                "WHERE id=id;";
+                "WHERE id = :id;";
 
         Map<String, Object> params = new HashMap<>();
         params.put("name", employee.getName());

@@ -1,15 +1,18 @@
 package com.example.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.domain.Employee;
 import com.example.service.EmployeeService;
 
 @Controller
-@RequestMapping("employee")
+@RequestMapping("/employee")
 public class EmployeeController {
 
     @Autowired
@@ -23,9 +26,9 @@ public class EmployeeController {
      */
     @GetMapping("/showList")
     public String showList(Model model) {
-        employeeService.showList();
-        model.addAttribute("employeeService", employeeService);
-        return "employee/list.html";
+        List<Employee> employees = employeeService.showList(); 
+        model.addAttribute("employees", employees);
+        return "employee/list";
     }
 
 }
