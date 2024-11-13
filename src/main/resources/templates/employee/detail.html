@@ -102,7 +102,7 @@
                 <tr>
                   <th nowrap>扶養人数</th>
                   <td>
-                    <label class="error-messages" th:errors="*{dependentsCount}">
+                    <label class="error-messages" th:if="*{dependentsCount}" th:text="#{message.dependentsCount}">
                       扶養人数を入力してください
                     </label>
                     <label class="control-label" style="color: red" for="dependentsCount"></label>

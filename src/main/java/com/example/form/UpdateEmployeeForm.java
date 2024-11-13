@@ -14,8 +14,8 @@ public class UpdateEmployeeForm {
     private String id;
 
     /** 扶養人数 */
-    @NotBlank(message = "扶養人数を入力してください")
-    @Pattern(regexp = "^[0-9]+$", message = "数値で入力してください")
+    @NotBlank
+    @Pattern(regexp = "^[0-9]+$")
     private String dependentsCount;
 
     public String getId() {
