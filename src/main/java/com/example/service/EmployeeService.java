@@ -49,4 +49,24 @@ public class EmployeeService {
     public void update(Employee employee) {
         employeeRepository.update(employee);
     }
+
+    /**
+     * 従業員情報を入社日の名前と期間で検索
+     *
+     * @param name    名前
+     * @param started 入社日(開始期間)
+     * @param ended   入社日(終了期間)
+     * @return 従業員情報リスト
+     */
+    public List<Employee> serach(String name, String started, String ended) {
+        if (name.isEmpty() && started.isEmpty() && ended.isEmpty()) {
+            return employeeRepository.findAll();
+        } else if (started.isEmpty() && ended.isEmpty()) {
+            return employeeRepository.findByName(name);
+        } else if (name.isEmpty()) {
+            return employeeRepository.findByHireDate(started, ended);
+        } else {
+            return employeeRepository.findByNameHireDate(name, started, ended);
+        }
+    }
 }

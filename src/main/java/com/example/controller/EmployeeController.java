@@ -84,4 +84,18 @@ public class EmployeeController {
         return "redirect:/employee/showList";
     }
 
+    /**
+     * 従業員情報を入社日の名前と期間で検索
+     *
+     * @param name    名前
+     * @param started 入社日(開始期間)
+     * @param ended   入社日(終了期間)
+     * @return 従業員情報リスト
+     */
+    @PostMapping("/search")
+    public String search(String name, String started, String ended, Model model) {
+        model.addAttribute("employeeList", employeeService.serach(name, started, ended));
+        return "employee/list";
+    }
+
 }

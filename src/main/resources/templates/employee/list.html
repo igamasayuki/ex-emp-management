@@ -31,6 +31,25 @@
       <div class="table-responsive col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
         <!-- ここから上を編集する必要はありません -->
 
+        <form method="post" action="#" th:action="@{/employee/search}">
+          <table class="table">
+            <tr>
+              <td>名前：<input type="text" name="name"></td>
+              <td>
+                入社期間：
+                <input type="date" name="started">
+                〜
+                <input type="date" name="ended">
+              </td>
+              <td>
+                <button type="submit" class="btn btn-primary">
+                  検索
+                </button>
+              </td>
+            </tr>
+          </table>
+        </form>
+
         <table class="table table-striped">
           <thead>
             <tr>
