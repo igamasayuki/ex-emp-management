@@ -14,7 +14,9 @@ import com.example.service.AdministratorService;
 
 import jakarta.servlet.http.HttpSession;
 
-/**@author harasawa */
+/**
+ * @author harasawakana
+ */
 
 @Controller
 @RequestMapping("")

@@ -2,7 +2,6 @@ package com.example.form;
 
 /**
  * @author harasawakana
- * 
  */
 
 public class InsertAdministratorForm {

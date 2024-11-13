@@ -39,15 +39,15 @@ public class EmployeeRepository {
 
     /** 従業員⼀覧情報を入社日順で取得 */
     public List<Employee> findAll() {
-        String insertSql = "SELECT id, name, image, gender, hire_date, mail_address, zip_code, address, telephone, salary, characteristics FROM administarters ORDER BY DESC;";
+        String insertSql = "SELECT id, name, image, gender, hire_date, mail_address, zip_code, address, telephone, salary, characteristics, dependents_count FROM employees ORDER BY hire_date DESC";
         List<Employee> employeeList = template.query(insertSql, EMPLOYEE_ROW_MAPPER);
         return employeeList;
     }
 
     /** 従業員情報を取得 */
     public Employee load(Integer id) {
-        String sql = "SELECT id, name, image, gender, hire_date, mail_address, zip_code, address, telephone, salary, characteristics FROM administarters WHERE id=:id;";
-        SqlParameterSource param = new MapSqlParameterSource().addValue("id",id);
+        String sql = "SELECT id, name, image, gender, hire_date, mail_address, zip_code, address, telephone, salary, characteristics FROM employees WHERE id=:id";
+        SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
         Employee employee = template.queryForObject(sql, param, EMPLOYEE_ROW_MAPPER);
         return employee;
     }
@@ -55,7 +55,7 @@ public class EmployeeRepository {
     /** 従業員情報を変更・更新 */
     public void update(Employee employee) {
         SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
-        String updateSql = "UPDATE administarters SET name=:name, image=:image, gender=:gender, hire_date=:hireDate, mail_address=:mailAddress, zip_code=:zipCode, address=:address, telephone=:telephone, salary=:salary, characteristics=:characteristics, dependents_count=:dependentsCount WHERE id=:id;";
+        String updateSql = "UPDATE employees SET name=:name, image=:image, gender=:gender, hire_date=:hireDate, mail_address=:mailAddress, zip_code=:zipCode, address=:address, telephone=:telephone, salary=:salary, characteristics=:characteristics, dependents_count=:dependentsCount WHERE id=:id";
         template.update(updateSql, param);
         return;
     }
