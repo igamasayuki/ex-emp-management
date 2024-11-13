@@ -18,7 +18,7 @@ public class EmployeeController {
     /**
      * 従業員一覧を表示します。
      *
-     * @param model　リクエストスコープに格納
+     * @param model リクエストスコープに格納
      * @return 従業員一覧を表示するビュー名
      */
     @GetMapping("/showList")
