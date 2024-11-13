@@ -33,7 +33,7 @@ public class AdministratorController {
   /**
    * 管理者情報登録画面を表示する.
    * 
-   * @param form
+   * @param form 画面入力情報
    * @return 管理者情報登録画面
    */
   @GetMapping("/toInsert")
@@ -44,7 +44,7 @@ public class AdministratorController {
   /**
    * 管理者情報を登録する.
    * 
-   * @param form
+   * @param form 画面入力情報
    * @return ログイン画面
    */
   @PostMapping("/insert")
@@ -61,7 +61,7 @@ public class AdministratorController {
   /**
    * ログイン画面を表示する.
    * 
-   * @param form
+   * @param form 画面入力情報
    * @return ログイン画面
    */
   @GetMapping("/")
@@ -72,8 +72,8 @@ public class AdministratorController {
   /**
    * ログイン処理をする.
    * 
-   * @param form
-   * @param model
+   * @param form  画面入力情報
+   * @param model リクエストスコープを使うためのオブジェクト
    * @return ログイン画面
    */
   @PostMapping("/login")
@@ -98,7 +98,7 @@ public class AdministratorController {
   /**
    * ログアウトする.
    * 
-   * @param form
+   * @param form 画面入力情報
    * @return ログイン画面
    */
   @GetMapping("/logout")

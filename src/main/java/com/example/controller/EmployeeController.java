@@ -14,6 +14,11 @@ import com.example.domain.Employee;
 import com.example.form.UpdateEmployeeForm;
 import com.example.service.EmployeeService;
 
+/**
+ * 従業員情報を検索する処理を記述する.
+ * 
+ * @author M.aoki
+ */
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -22,8 +27,9 @@ public class EmployeeController {
   private EmployeeService employeeService;
 
   /**
+   * 従業員情報を全件取得する.
    * 
-   * @param model
+   * @param model リクエストスコープを使うためのオブジェクト
    * @return 従業員一覧画面
    */
   @GetMapping("/showList")
@@ -39,9 +45,9 @@ public class EmployeeController {
   /**
    * 従業員情報を取得する.
    * 
-   * @param id
-   * @param model
-   * @param form
+   * @param id    従業員ID
+   * @param model リクエストスコープを使うためのオブジェクト
+   * @param form  画面入力情報
    * @return 従業員詳細情報
    */
   @GetMapping("/showDetail")
@@ -63,7 +69,7 @@ public class EmployeeController {
   /**
    * 従業員詳細情報を更新する.
    * 
-   * @param form
+   * @param form 画面入力情報
    * @return 従業員一覧画面
    */
   @PostMapping("/update")

@@ -23,7 +23,7 @@ public class AdministratorService {
   /**
    * 管理者情報登録をする業務処理を行う.
    * 
-   * @param administrator
+   * @param administrator 管理者情報を登録するためのオブジェクト
    */
   public void insert(Administrator administrator) {
     administratorRepository.insert(administrator);
@@ -32,8 +32,8 @@ public class AdministratorService {
   /**
    * ログインをする業務処理を行う.
    * 
-   * @param mailAddress
-   * @param password
+   * @param mailAddress メールアドレス
+   * @param password    パスワード
    * @return administrator
    */
   public Administrator login(String mailAddress, String password) {

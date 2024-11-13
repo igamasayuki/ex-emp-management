@@ -33,7 +33,7 @@ public class EmployeeService {
   /**
    * 従業員情報を取得する.
    * 
-   * @param id
+   * @param id 従業員ID
    * @return 主キー検索した結果の従業員
    */
   public Employee showDetail(Integer id) {
@@ -43,7 +43,7 @@ public class EmployeeService {
   /**
    * 従業員情報を更新する.
    * 
-   * @param employee
+   * @param employee 更新したい従業員情報
    */
   public void update(Employee employee) {
     employeeRepository.update(employee);

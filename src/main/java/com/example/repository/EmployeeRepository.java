@@ -62,7 +62,7 @@ public class EmployeeRepository {
   /**
    * 主キーから従業員情報を検索.
    * 
-   * @param id
+   * @param id 従業員ID
    * @return 従業員情報
    * 
    */
@@ -81,7 +81,7 @@ public class EmployeeRepository {
   /**
    * 従業員情報を変更する.
    * 
-   * @param employee
+   * @param employee 変更したい従業員情報
    */
   public void update(Employee employee) {
     SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
