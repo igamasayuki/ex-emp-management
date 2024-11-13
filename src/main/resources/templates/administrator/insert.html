@@ -52,9 +52,7 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <label for="name"> 氏名: </label>
-                      <label class="error-messages">
-                        氏名を入力してください
-                      </label>
+                      <div th:errors="*{name}" class="error-messages"></div>
                       <input
                         type="text"
                         name="name"
@@ -71,9 +69,7 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <label for="mailAddress"> メールアドレス: </label>
-                      <label class="error-messages">
-                        メールアドレスを入力してください
-                      </label>
+                      <div th:errors="*{mailAddress}" class="error-messages"></div>
                       <input
                         type="text"
                         name="mailAddress"
@@ -90,9 +86,7 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <label for="password"> パスワード: </label>
-                      <label class="error-messages">
-                        パスワードを入力してください
-                      </label>
+                      <div th:errors="*{password}" class="error-messages"></div>
                       <input
                         type="password"
                         name="password"
