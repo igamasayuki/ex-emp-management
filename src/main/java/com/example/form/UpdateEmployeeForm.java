@@ -28,9 +28,4 @@ public class UpdateEmployeeForm {
     this.dependentsCount = dependentsCount;
   }
 
-  @Override
-  public String toString() {
-    return "UpdateEmployeeForm [id=" + id + ", dependentsCount=" + dependentsCount + "]";
-  }
-
 }
