@@ -1,6 +1,7 @@
 package com.example.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,8 +25,9 @@ public class AdministratorService {
      * 管理者情報を挿入する
      *
      * @param administrator 管理者情報
+     * @throws DuplicateKeyException 一意制約違反
      */
-    public void insert(Administrator administrator) {
+    public void insert(Administrator administrator) throws DuplicateKeyException {
 
         administratorRepository.insert(administrator);
     }

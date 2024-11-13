@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import java.sql.Date;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +14,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Employee;
+import com.example.form.LoginForm;
 import com.example.form.UpdateEmployeeForm;
 import com.example.service.EmployeeService;
 
+import jakarta.servlet.http.HttpSession;
+
+/**
+ * 従業員関連画面を表示する処理を記述する
+ *
+ * @author T.Araki
+ */
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
+
+    /** セッションスコープ */
+    @Autowired
+    private HttpSession session;
 
     /** employeeService */
     @Autowired
@@ -33,6 +48,16 @@ public class EmployeeController {
     }
 
     /**
+     * LoginFormオブジェクトの作成
+     *
+     * @return LoginFormオブジェクト
+     */
+    @ModelAttribute
+    private LoginForm setUpUpdateLoginForm() {
+        return new LoginForm();
+    }
+
+    /**
      * 従業員一覧を出力する
      *
      * @param model モデル
@@ -40,6 +65,9 @@ public class EmployeeController {
      */
     @GetMapping("/showList")
     public String showList(Model model) {
+        if (session.getAttribute("administratorName") == null) {
+            return "forward:/";
+        }
         model.addAttribute("employeeList", employeeService.showList());
         return "employee/list";
     }
@@ -53,6 +81,9 @@ public class EmployeeController {
      */
     @GetMapping("/showDetail")
     public String showDetail(String id, Model model, UpdateEmployeeForm form) {
+        if (session.getAttribute("administratorName") == null) {
+            return "forward:/";
+        }
         model.addAttribute("employee", employeeService.showDetail(Integer.parseInt(id)));
         return "employee/detail";
     }
@@ -65,14 +96,37 @@ public class EmployeeController {
      */
     @PostMapping("/update")
     public String update(@Validated UpdateEmployeeForm form, BindingResult result, Model model) {
+        if (session.getAttribute("administratorName") == null) {
+            return "forward:/";
+        }
         if (result.hasErrors()) {
             return showDetail(form.getId(), model, form);
         }
 
-        Employee employee = employeeService.showDetail(Integer.parseInt(form.getId()));
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(form, employee);
+        employee.setId(Integer.parseInt(form.getId()));
+        employee.setImage(form.getImage());
+        employee.setHireDate(Date.valueOf(form.getHireDate()));
+        employee.setSalary(Integer.parseInt(form.getSalary()));
         employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));
+
         employeeService.update(employee);
         return "redirect:/employee/showList";
+    }
+
+    /**
+     * 従業員情報を入社日の名前と期間で検索
+     *
+     * @param name    名前
+     * @param started 入社日(開始期間)
+     * @param ended   入社日(終了期間)
+     * @return 従業員情報リスト
+     */
+    @PostMapping("/search")
+    public String search(String name, String started, String ended, Model model) {
+        model.addAttribute("employeeList", employeeService.serach(name, started, ended));
+        return "employee/list";
     }
 
 }

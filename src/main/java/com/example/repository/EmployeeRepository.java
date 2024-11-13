@@ -1,8 +1,10 @@
 package com.example.repository;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -93,7 +95,7 @@ public class EmployeeRepository {
         // 実行
         try {
             return template.queryForObject(sql, param, EMPLOYEE_ROW_MAPPER);
-        } catch (Exception e) {
+        } catch (IncorrectResultSizeDataAccessException e) {
             // 情報が存在しない場合nullを返す。
             return null;
         }
@@ -130,5 +132,146 @@ public class EmployeeRepository {
 
         // 実行
         template.update(sql, param);
+    }
+
+    /**
+     * 従業員情報を名前で曖昧検索
+     *
+     * @param name 名前
+     * @return 従業員情報リスト
+     */
+    public List<Employee> findByName(String name) {
+
+        String sql = String.format("""
+                SELECT
+                    ID,
+                    NAME,
+                    IMAGE,
+                    GENDER,
+                    HIRE_DATE,
+                    MAIL_ADDRESS,
+                    ZIP_CODE,
+                    ADDRESS,
+                    TELEPHONE,
+                    SALARY,
+                    CHARACTERISTICS,
+                    DEPENDENTS_COUNT
+                FROM
+                    %s
+                WHERE
+                    NAME LIKE :name
+                ORDER BY
+                    HIRE_DATE DESC;
+                """, TABLE_NAME);
+
+        SqlParameterSource param = new MapSqlParameterSource().addValue("name", "%" + name + "%");
+
+        List<Employee> employeeList = template.query(sql, param, EMPLOYEE_ROW_MAPPER);
+
+        return employeeList;
+    }
+
+    /**
+     * 従業員情報を入社日の期間で検索
+     *
+     * @param started 入社日(開始期間)
+     * @param ended   入社日(終了期間)
+     * @return 従業員情報リスト
+     */
+    public List<Employee> findByHireDate(String started, String ended) {
+
+        StringBuilder sql = new StringBuilder();
+        sql.append(String.format("""
+                SELECT
+                    ID,
+                    NAME,
+                    IMAGE,
+                    GENDER,
+                    HIRE_DATE,
+                    MAIL_ADDRESS,
+                    ZIP_CODE,
+                    ADDRESS,
+                    TELEPHONE,
+                    SALARY,
+                    CHARACTERISTICS,
+                    DEPENDENTS_COUNT
+                FROM
+                    %s
+                WHERE
+                    HIRE_DATE
+                """, TABLE_NAME));
+
+        SqlParameterSource param = null;
+
+        if (!(started.isEmpty()) && !(ended.isEmpty())) {
+            sql.append(" BETWEEN :started AND :ended ");
+            param = new MapSqlParameterSource().addValue("started",
+                    Date.valueOf(started)).addValue("ended", Date.valueOf(ended));
+        } else if (!(started.isEmpty())) {
+            sql.append(" >= :started ");
+            param = new MapSqlParameterSource().addValue("started", Date.valueOf(started));
+        } else {
+            sql.append(" <= :ended ");
+            param = new MapSqlParameterSource().addValue("ended", Date.valueOf(ended));
+        }
+
+        sql.append("ORDER BY HIRE_DATE DESC;");
+
+        return template.query(sql.toString(), param, EMPLOYEE_ROW_MAPPER);
+    }
+
+    /**
+     * 従業員情報を入社日の名前と期間で検索
+     *
+     * @param name    名前
+     * @param started 入社日(開始期間)
+     * @param ended   入社日(終了期間)
+     * @return 従業員情報リスト
+     */
+    public List<Employee> findByNameHireDate(String name, String started, String ended) {
+
+        StringBuilder sql = new StringBuilder();
+        sql.append(String.format("""
+                SELECT
+                    ID,
+                    NAME,
+                    IMAGE,
+                    GENDER,
+                    HIRE_DATE,
+                    MAIL_ADDRESS,
+                    ZIP_CODE,
+                    ADDRESS,
+                    TELEPHONE,
+                    SALARY,
+                    CHARACTERISTICS,
+                    DEPENDENTS_COUNT
+                FROM
+                    %s
+                WHERE
+                    NAME LIKE :name
+                AND
+                    HIRE_DATE
+                """, TABLE_NAME));
+
+        SqlParameterSource param = null;
+
+        String paramName = "%" + name + "%";
+
+        if (!(started.isEmpty()) && !(ended.isEmpty())) {
+            sql.append(" BETWEEN :started AND :ended ");
+            param = new MapSqlParameterSource().addValue("name", paramName).addValue("started",
+                    Date.valueOf(started)).addValue("ended", Date.valueOf(ended));
+        } else if (!(started.isEmpty())) {
+            sql.append(" >= :started ");
+            param = new MapSqlParameterSource().addValue("name", paramName).addValue("started", Date.valueOf(started));
+        } else {
+            sql.append(" <= :ended ");
+            param = new MapSqlParameterSource().addValue("name", paramName).addValue("ended", Date.valueOf(ended));
+        }
+
+        sql.append("ORDER BY HIRE_DATE DESC;");
+
+        return template.query(sql.toString(), param, EMPLOYEE_ROW_MAPPER);
+
     }
 }
