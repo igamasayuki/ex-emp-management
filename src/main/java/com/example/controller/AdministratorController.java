@@ -58,6 +58,7 @@ public class AdministratorController {
     /**
      * 管理者登録画面を表示する
      *
+     * @param form フォーム
      * @return 管理者登録画面
      */
     @GetMapping("/toInsert")
