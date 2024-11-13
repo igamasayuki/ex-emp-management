@@ -2,6 +2,7 @@ package com.example.controller;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -73,14 +74,19 @@ public class AdministratorController {
      * @return ログイン画面(リダイレクト)
      */
     @PostMapping("/insert")
-    public String insert(@Validated InsertAdministratorForm form, BindingResult result) {
+    public String insert(@Validated InsertAdministratorForm form, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return toInsert(form);
         }
 
         Administrator administrator = new Administrator();
         BeanUtils.copyProperties(form, administrator);
-        administratorService.insert(administrator);
+        try {
+            administratorService.insert(administrator);
+        } catch (DuplicateKeyException e) {
+            model.addAttribute("message", "このメールアドレスは既に登録されています");
+            return toInsert(form);
+        }
 
         return "redirect:/";
     }

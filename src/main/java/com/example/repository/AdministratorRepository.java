@@ -1,6 +1,8 @@
 package com.example.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -40,8 +42,9 @@ public class AdministratorRepository {
      * 管理者情報を挿入する
      *
      * @param administorator 管理者情報
+     * @throws DuplicateKeyException 一意制約違反
      */
-    public void insert(Administrator administorator) {
+    public void insert(Administrator administorator) throws DuplicateKeyException {
 
         // クエリ作成
         String sql = String.format(
@@ -79,7 +82,7 @@ public class AdministratorRepository {
         // 実行
         try {
             return template.queryForObject(sql, param, ADMINISTRATOR_ROW_MAPPER);
-        } catch (Exception e) {
+        } catch (IncorrectResultSizeDataAccessException e) {
             // 情報が存在しない場合nullを返す。
             return null;
         }

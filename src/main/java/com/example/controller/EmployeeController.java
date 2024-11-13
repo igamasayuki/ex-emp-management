@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import java.sql.Date;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -69,8 +72,14 @@ public class EmployeeController {
             return showDetail(form.getId(), model, form);
         }
 
-        Employee employee = employeeService.showDetail(Integer.parseInt(form.getId()));
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(form, employee);
+        employee.setId(Integer.parseInt(form.getId()));
+        employee.setImage(form.getImage());
+        employee.setHireDate(Date.valueOf(form.getHireDate()));
+        employee.setSalary(Integer.parseInt(form.getSalary()));
         employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));
+
         employeeService.update(employee);
         return "redirect:/employee/showList";
     }

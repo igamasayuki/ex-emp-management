@@ -3,6 +3,7 @@ package com.example.repository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -93,7 +94,7 @@ public class EmployeeRepository {
         // 実行
         try {
             return template.queryForObject(sql, param, EMPLOYEE_ROW_MAPPER);
-        } catch (Exception e) {
+        } catch (IncorrectResultSizeDataAccessException e) {
             // 情報が存在しない場合nullを返す。
             return null;
         }
