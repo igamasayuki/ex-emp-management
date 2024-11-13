@@ -9,8 +9,9 @@ import com.example.repository.AdministratorRepository;
 
 /**
  * Administratorのサービスクラス
+ * 
+ * @author 金丸天
  */
-
 @Service
 @Transactional
 public class AdministratorService {
@@ -31,7 +32,7 @@ public class AdministratorService {
      * 
      * @param mailAddress
      * @param password
-     * @return
+     * @return 登録情報を返す
      */
     public Administrator login(String mail, String password) {
         Administrator administrator = administratorRepository.findByMailAddressAndPassword(mail, password);

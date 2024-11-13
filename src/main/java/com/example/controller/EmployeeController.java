@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +19,6 @@ import com.example.service.EmployeeService;
  * @author 金丸天
  *         employeesのコントロールクラス
  */
-
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -31,10 +32,9 @@ public class EmployeeController {
      * EmployeeServiceクラスのshowListを呼び出し
      * "employees/list"にフォワードする
      * 
-     * @param model
-     * @return
+     * @param model リクエストスコープ
+     * @return "employee/list"に画面遷移
      */
-
     @GetMapping("/showList")
     public String showList(Model model) {
         List<Employee> employeeList = employeeService.showList();
@@ -43,6 +43,14 @@ public class EmployeeController {
         return "employee/list";
     }
 
+    /**
+     * EmployeeServiceクラスのshowDetailを呼び出し
+     * "employees/detail.html"にフォワードする
+     * 
+     * @param id    employeeのID
+     * @param model リクエストスコープ
+     * @return employee/detail.html
+     */
     @GetMapping("/showDetail")
     public String showDetail(String id, Model model, UpdateEmployeeForm form) {
         Integer emID = Integer.parseInt(id);
@@ -53,8 +61,20 @@ public class EmployeeController {
 
     }
 
+    /**
+     * "employees/update.html"にフォワードする
+     * 
+     * @param id     employeeのID
+     * @param result エラー内容の格納
+     * @param model  リクエストスコープ
+     * @return employee/update.html
+     */
     @PostMapping("/update")
-    public String update(UpdateEmployeeForm form) {
+    public String update(@Validated UpdateEmployeeForm form, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return showDetail(form.getId(), model, form);
+        }
+
         Integer EmId = Integer.parseInt(form.getId());
         Employee employee = employeeService.showDetail(EmId);
         employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));

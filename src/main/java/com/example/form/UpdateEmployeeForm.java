@@ -1,5 +1,7 @@
 package com.example.form;
 
+import jakarta.validation.constraints.NotBlank;
+
 /**
  * @Author: 金丸天
  *          リクエストパラメータを受け取るクラス
@@ -9,6 +11,7 @@ package com.example.form;
 public class UpdateEmployeeForm {
 
     private String id;
+    @NotBlank(message = "値が空欄になっています")
     private String dependentsCount;
 
     public String getId() {

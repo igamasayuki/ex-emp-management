@@ -34,7 +34,7 @@ public class EmployeeService {
     }
 
     /**
-     * EmployeeRepositoryから対象のid
+     * EmployeeRepositoryから対象のidのオブジェクトを取得する
      * 
      * @param id
      * @return
@@ -44,9 +44,9 @@ public class EmployeeService {
     }
 
     /**
-     * 
+     * @param employee
+     *                 EmployeeRepositoryから対象のemployeeのオブジェクトを更新する
      */
-
     public void update(Employee employee) {
         employeeRepository.update(employee);
 

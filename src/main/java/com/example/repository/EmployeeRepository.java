@@ -21,22 +21,28 @@ import com.example.domain.Employee;
 public class EmployeeRepository {
 
     /**
-     * @param
-     * id=id
-     *              name=名前
-     *              image=画像
-     *              gender=性別
-     *              hireDate=誕生日
-     *              mailAddress=メールアドレス
-     *              zipCode=郵便番号
-     *              address=住所
-     *              telephone=電話番号
-     *              salary=給与
-     *              characteristics=特製
-     *              dependentsCount=扶養人数
-     *              return DBからレコードごとにオブジェクトを生成したリストを返す
+     * @param id=id
+     * @param name=名前
+     * @param image=画像
+     * @param gender=性別
+     * @param hireDate=誕生日
+     * @param mailAddress=メールアドレス
+     * @param zipCode=郵便番号
+     * @param address=住所
+     * @param telephone=電話番号
+     * @param salary=給与
+     * @param characteristics=特製
+     * @param dependentsCount=扶養人数
+     * @param return               DBからレコードごとにオブジェクトを生成したリストを返す
      */
 
+    /**
+     * DBから取得した情報をオブジェクトに直す
+     * 
+     * @param rs DB実行しているインスタンス
+     * @param i  データの桁数
+     * @return オブジェクトを返す
+     */
     private static final RowMapper<Employee> ROW_MAPPER = (rs, i) -> {
         Employee employee = new Employee();
         employee.setId(rs.getInt("id"));
@@ -66,7 +72,7 @@ public class EmployeeRepository {
      */
     public List<Employee> findAll() {
 
-        String sql = "SELECT * FROM employees";
+        String sql = "SELECT * FROM employees order by hire_date desc";
 
         return template.query(sql, ROW_MAPPER);
 
@@ -74,6 +80,9 @@ public class EmployeeRepository {
 
     /**
      * idでemployeeのオブジェクトを1件返す
+     * 
+     * @param id employのID
+     * @return 該当のIDのオブジェクト
      */
     public Employee load(Integer id) {
 
@@ -85,7 +94,11 @@ public class EmployeeRepository {
 
     }
 
-    // employeeのオブジェクトをDBに登録する
+    /**
+     * 受けっとったEmployeeオブジェクトにて該当の主キーデータを更新
+     * 
+     * @param employee Employeeオブジェクト
+     */
     public void update(Employee employee) {
 
         String sql = "UPDATE employees SET name = :name, image = :image, gender = :gender, hire_date = :hireDate, mail_address = :mailAddress, zip_code = :zipCode, address = :address, telephone = :telephone, salary = :salary, characteristics = :characteristics, dependents_count = :dependentsCount WHERE id = :id";

@@ -19,14 +19,20 @@ import com.example.domain.Administrator;
 public class AdministratorRepository {
 
     /**
-     * @param
-     * id=ID
-     *              name=名前
-     *              mailAddress=メールアドレス
-     *              password=パスワード
-     *              return DBからレコードごとにオブジェクトを生成したリストを返す
+     * @param id=ID
+     * @param name=名前
+     * @param ailAddress=メールアドレス
+     * @param password=パスワード
+     * @param return             DBからレコードごとにオブジェクトを生成したリストを返す
      */
 
+    /**
+     * DBから渡された情報をオブジェクトに格納する
+     * 
+     * @param rs SQL文の実行
+     * @param i  受け取るデータの列数
+     * @return
+     */
     private static final RowMapper<Administrator> Row_Mapper = (rs, i) -> {
         Administrator administrator = new Administrator();
         administrator.setId(rs.getInt("id"));
@@ -44,6 +50,8 @@ public class AdministratorRepository {
     /**
      * DB上にadministratorのIDが存在しなければ挿入
      * 存在すれば更新を行う
+     * 
+     * @param administrator 登録される/更新される情報
      */
 
     public void insert(Administrator administrator) {
@@ -65,8 +73,14 @@ public class AdministratorRepository {
         }
     }
 
-    // メールアドレスとパスワードでadministrator内に該当のデータがあるか検索し、
-    // 該当するレコードが存在しない場合はnullを返す
+    /**
+     * メールアドレスとパスワードでadministrator内に該当のデータがあるか検索し、
+     * 該当するレコードが存在しない場合はnullを返す
+     * 
+     * @param mailAddress 管理者のメールアドレス
+     * @param password    管理者のパスワード
+     * @return SQLを実行して取得したデータを返す、もしデータがなければnullを返す
+     */
     public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
 
         String sql = "SELECT * FROM administrators WHERE mail_address = :mailAddress AND password = :password";

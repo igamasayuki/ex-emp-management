@@ -168,6 +168,7 @@
                         for="dependentsCount"
                       ></label>
                       <input type="hidden" name="id" th:value="${employee.id}"/>
+                      <span th:errors="*{dependentsCount}" style="color:red"></span>
                       <input
                         type="text"
                         name="dependentsCount"
