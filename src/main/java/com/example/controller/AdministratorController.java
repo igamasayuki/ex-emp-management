@@ -36,6 +36,11 @@ public class AdministratorController {
         return new LoginForm();
     }
 
+    @ModelAttribute
+    public InsertAdministratorForm insertAdministratorForm() {
+        return new InsertAdministratorForm();
+    }
+
     @Autowired
     private HttpSession session;
 
@@ -58,7 +63,10 @@ public class AdministratorController {
      * @return redirect:/
      */
     @PostMapping("/insert")
-    public String insert(InsertAdministratorForm form) {
+    public String insert(@Validated InsertAdministratorForm form, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "administrator/insert";
+        }
         Administrator administrator = new Administrator();
 
         BeanUtils.copyProperties(form, administrator);
@@ -94,7 +102,6 @@ public class AdministratorController {
         Administrator administrator = administratorService.login(form.getMailAddress(), form.getPassword());
 
         if (result.hasErrors()) {
-            model.addAttribute("errorMessage", "メールアドレスまたがパスワードが不正です。");
             return toLogin(form, model);
         }
 

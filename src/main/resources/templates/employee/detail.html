@@ -65,63 +65,70 @@
                   <tr>
                     
                     <th nowrap>性別</th>
-                    <div  th:errors="*{gender}" style="color: red;"></div >
+                    
                     <td>
+                      <div  th:errors="*{gender}" style="color: red;"></div >
                       <input type="text" name="gender" th:filed="*{gender}" th:value="${employee.gender}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>入社日</th>
-                    <div  th:errors="*{hireDate}" style="color: red;"></div >
+                    
                     <td>
+                      <div  th:errors="*{hireDate}" style="color: red;"></div >
                       <input type="text" name="hireDate" th:filed="*{hireDate}" th:value="${employee.hireDate}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>メールアドレス</th>
-                    <div  th:errors="*{mailAddress}" style="color: red;"></div >
+                    
                     <td>
+                      <div  th:errors="*{mailAddress}" style="color: red;"></div >
                       <input type="text" name="mailAddress" th:filed="*{mailAddress}" th:value="${employee.mailAddress}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>郵便番号</th>
-                    <div  th:errors="*{zipCode}" style="color: red;"></div >
+                    
                     <td>
+                      <div  th:errors="*{zipCode}" style="color: red;"></div >
                       <input type="text" name="zipCode" th:filed="*{zipCode}" th:value="${employee.zipCode}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>住所</th>
-                    <div  th:errors="*{address}" style="color: red;"></div >
+                    
                     <td>
+                      <div  th:errors="*{address}" style="color: red;"></div >
                       <input type="text" name="address" th:filed="*{address}" th:value="${employee.address}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>電話番号</th>
-                    <div  th:errors="*{telephone}" style="color: red;"></div >
+                    
                     <td>
+                      <div  th:errors="*{telephone}" style="color: red;"></div >
                       <input type="text" name="telephone" th:filed="*{telephone}" th:value="${employee.telephone}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>給料</th>
-                    <div  th:errors="*{salary}" style="color: red;"></div >
+                    
                     <td>
+                      <div  th:errors="*{salary}" style="color: red;"></div >
                       <input type="text" name="salary" th:filed="*{salary}" th:value="${employee.salary}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>特性</th>
-                    <div  th:errors="*{characteristics}" style="color: red;"></div>
+                    
                     <td>
+                      <div  th:errors="*{characteristics}" style="color: red;"></div>
                       <input type="text" name="characteristics" size="20" th:filed="*{characteristics}" th:value="${employee.characteristics}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>扶養人数</th>
-                    <div  th:errors="*{dependentsCount}" style="color: red;"></div>
                     <td>
                       <label
                         class="control-label"
