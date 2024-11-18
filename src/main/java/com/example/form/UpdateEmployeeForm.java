@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -23,10 +24,11 @@ public class UpdateEmployeeForm {
     private String image;
     @NotBlank(message = "性別が空欄になっています")
     private String gender;
-    @NotBlank(message = "入社日が空欄になっています")
+    @NotNull(message = "入社日が空欄になっています")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date hireDate;
     @NotBlank(message = "メールアドレスが空欄になっています")
+    @Email(message = "メールアドレス形式にしてください")
     private String mailAddress;
     @NotBlank(message = "番地が空欄になっています")
     private String zipCode;

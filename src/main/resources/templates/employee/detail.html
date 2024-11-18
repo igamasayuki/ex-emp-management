@@ -50,12 +50,14 @@
                   <tr>
                     <th nowrap>従業員名</th>
                     <td>
-                      <input type="text" name="name" th:value="${employee.name}">
+                      <div th:errors="*{name}" style="color: red;"></div >
+                      <input type="text" name="name" th:filed="*{name}" th:value="${employee.name}">
                 
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>写真</th>
+                    <span style="color: red;"></span>
                     <td>
                       <img th:src="@{'/img/'+${employee.image}+'/'}">
                     </td>
@@ -63,54 +65,63 @@
                   <tr>
                     
                     <th nowrap>性別</th>
+                    <div  th:errors="*{gender}" style="color: red;"></div >
                     <td>
-                      <input type="text" name="gender" th:value="${employee.gender}">
+                      <input type="text" name="gender" th:filed="*{gender}" th:value="${employee.gender}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>入社日</th>
+                    <div  th:errors="*{hireDate}" style="color: red;"></div >
                     <td>
-                      <input type="text" name="hireDate" th:value="${employee.hireDate}">
+                      <input type="text" name="hireDate" th:filed="*{hireDate}" th:value="${employee.hireDate}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>メールアドレス</th>
+                    <div  th:errors="*{mailAddress}" style="color: red;"></div >
                     <td>
-                      <input type="text" name="mailAddress" th:value="${employee.mailAddress}">
+                      <input type="text" name="mailAddress" th:filed="*{mailAddress}" th:value="${employee.mailAddress}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>郵便番号</th>
+                    <div  th:errors="*{zipCode}" style="color: red;"></div >
                     <td>
-                      <input type="text" name="zipCode" th:value="${employee.zipCode}">
+                      <input type="text" name="zipCode" th:filed="*{zipCode}" th:value="${employee.zipCode}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>住所</th>
+                    <div  th:errors="*{address}" style="color: red;"></div >
                     <td>
-                      <input type="text" name="address" th:value="${employee.address}">
+                      <input type="text" name="address" th:filed="*{address}" th:value="${employee.address}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>電話番号</th>
+                    <div  th:errors="*{telephone}" style="color: red;"></div >
                     <td>
-                      <input type="text" name="telephone" th:value="${employee.telephone}">
+                      <input type="text" name="telephone" th:filed="*{telephone}" th:value="${employee.telephone}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>給料</th>
+                    <div  th:errors="*{salary}" style="color: red;"></div >
                     <td>
-                      <input type="text" name="salary" th:value="${employee.salary}">
+                      <input type="text" name="salary" th:filed="*{salary}" th:value="${employee.salary}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>特性</th>
+                    <div  th:errors="*{characteristics}" style="color: red;"></div>
                     <td>
-                      <input type="text" name="characteristics" size="20" th:value="${employee.characteristics}">
+                      <input type="text" name="characteristics" size="20" th:filed="*{characteristics}" th:value="${employee.characteristics}">
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>扶養人数</th>
+                    <div  th:errors="*{dependentsCount}" style="color: red;"></div>
                     <td>
                       <label
                         class="control-label"
@@ -124,6 +135,7 @@
                         name="dependentsCount"
                         id="dependentsCount"
                         class="form-control"
+                        th:filed="*{dependentsCount}"
                         th:value="${employee.dependentsCount}"
                       />
                     </td>

@@ -1,7 +1,9 @@
 package com.example.form;
 
-//@Author:金丸天
-//Administratorのフォームクラスを作成
+/**
+ * @Author:金丸天
+ *             Administratorのフォームクラスを作成
+ */
 public class InsertAdministratorForm {
 
     private String name;

@@ -54,11 +54,11 @@ public class EmployeeController {
      */
     @GetMapping("/showDetail")
     public String showDetail(String id, Model model, UpdateEmployeeForm form) {
-        Integer emID = Integer.parseInt(id);
-        Employee employee = employeeService.showDetail(emID);
+        Integer employeeId = Integer.parseInt(id);
+        Employee employee = employeeService.showDetail(employeeId);
         model.addAttribute("employee", employee);
 
-        return "employee/detail.html";
+        return "employee/detail";
 
     }
 
@@ -80,8 +80,8 @@ public class EmployeeController {
 
         }
 
-        Integer EmId = Integer.parseInt(form.getId());
-        Employee employee = employeeService.showDetail(EmId);
+        Integer employeeId = Integer.parseInt(form.getId());
+        Employee employee = employeeService.showDetail(employeeId);
         form.getId();
         employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));
         BeanUtils.copyProperties(form, employee);

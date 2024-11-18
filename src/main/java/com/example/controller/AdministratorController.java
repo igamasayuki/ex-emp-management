@@ -100,7 +100,7 @@ public class AdministratorController {
 
         if (administrator == null) {
             model.addAttribute("errorMessage", "メールアドレスまたがパスワードが不正です。");
-            return "administrator/login";
+            return toLogin(form, model);
         }
 
         session.setAttribute("administratorName", administrator.getName());

@@ -21,22 +21,6 @@ import com.example.domain.Employee;
 public class EmployeeRepository {
 
     /**
-     * @param id=id
-     * @param name=名前
-     * @param image=画像
-     * @param gender=性別
-     * @param hireDate=誕生日
-     * @param mailAddress=メールアドレス
-     * @param zipCode=郵便番号
-     * @param address=住所
-     * @param telephone=電話番号
-     * @param salary=給与
-     * @param characteristics=特製
-     * @param dependentsCount=扶養人数
-     * @param return               DBからレコードごとにオブジェクトを生成したリストを返す
-     */
-
-    /**
      * DBから取得した情報をオブジェクトに直す
      * 
      * @param rs DB実行しているインスタンス
