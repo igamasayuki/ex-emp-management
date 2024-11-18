@@ -22,55 +22,8 @@
   </head>
   <body>
     <div class="container">
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button
-              type="button"
-              class="navbar-toggle collapsed"
-              data-toggle="collapse"
-              data-target="#bs-example-navbar-collapse-1"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span> <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a
-              class="navbar-brand"
-              href="list.html"
-              th:href="@{/employee/showList}"
-            >
-              <!-- 企業ロゴ -->
-              <img
-                src="../../static/img/header_logo_small.png"
-                th:src="@{/img/header_logo_small.png}"
-              />
-            </a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div
-            class="collapse navbar-collapse"
-            id="bs-example-navbar-collapse-1"
-          >
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="list.html">従業員管理</a></li>
-            </ul>
-            <p class="navbar-text navbar-right">
-              <span th:text="${session.administratorName + 'さん'}"
-                >山田さん</span
-              >こんにちは！ &nbsp;&nbsp;&nbsp;
-              <a href="../administrator/login.html" class="navbar-link"
-                >ログアウト</a
-              >
-            </p>
-          </div>
-          <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-      </nav>
+      <div th:insert="footers::header"></div>
+   
 
       <!-- パンくずリスト -->
       <ol class="breadcrumb">
@@ -90,17 +43,120 @@
             <!-- ここから上を編集する必要はありません -->
 
             <!-- ここにモックのform要素を貼り付けます -->
-
+            <form method="post" action="list.html" th:action="@{/employee/update}" th:object="${updateEmployeeForm}">
+              <fieldset>
+                <legend>従業員情報</legend>
+                <table class="table table-striped">
+                  <tr>
+                    <th nowrap>従業員名</th>
+                    <td>
+                      <div th:errors="*{name}" style="color: red;"></div >
+                      <input type="text" name="name" th:filed="*{name}" th:value="${employee.name}">
+                
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>写真</th>
+                    <span style="color: red;"></span>
+                    <td>
+                      <img th:src="@{'/img/'+${employee.image}+'/'}">
+                    </td>
+                  </tr>
+                  <tr>
+                    
+                    <th nowrap>性別</th>
+                    
+                    <td>
+                      <div  th:errors="*{gender}" style="color: red;"></div >
+                      <input type="text" name="gender" th:filed="*{gender}" th:value="${employee.gender}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>入社日</th>
+                    
+                    <td>
+                      <div  th:errors="*{hireDate}" style="color: red;"></div >
+                      <input type="text" name="hireDate" th:filed="*{hireDate}" th:value="${employee.hireDate}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>メールアドレス</th>
+                    
+                    <td>
+                      <div  th:errors="*{mailAddress}" style="color: red;"></div >
+                      <input type="text" name="mailAddress" th:filed="*{mailAddress}" th:value="${employee.mailAddress}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>郵便番号</th>
+                    
+                    <td>
+                      <div  th:errors="*{zipCode}" style="color: red;"></div >
+                      <input type="text" name="zipCode" th:filed="*{zipCode}" th:value="${employee.zipCode}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>住所</th>
+                    
+                    <td>
+                      <div  th:errors="*{address}" style="color: red;"></div >
+                      <input type="text" name="address" th:filed="*{address}" th:value="${employee.address}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>電話番号</th>
+                    
+                    <td>
+                      <div  th:errors="*{telephone}" style="color: red;"></div >
+                      <input type="text" name="telephone" th:filed="*{telephone}" th:value="${employee.telephone}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>給料</th>
+                    
+                    <td>
+                      <div  th:errors="*{salary}" style="color: red;"></div >
+                      <input type="text" name="salary" th:filed="*{salary}" th:value="${employee.salary}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>特性</th>
+                    
+                    <td>
+                      <div  th:errors="*{characteristics}" style="color: red;"></div>
+                      <input type="text" name="characteristics" size="20" th:filed="*{characteristics}" th:value="${employee.characteristics}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th nowrap>扶養人数</th>
+                    <td>
+                      <label
+                        class="control-label"
+                        style="color: red"
+                        for="dependentsCount"
+                      ></label>
+                      <input type="hidden" name="id" th:value="${employee.id}"/>
+                      <span th:errors="*{dependentsCount}" style="color:red"></span>
+                      <input
+                        type="text"
+                        name="dependentsCount"
+                        id="dependentsCount"
+                        class="form-control"
+                        th:filed="*{dependentsCount}"
+                        th:value="${employee.dependentsCount}"
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <button type="submit" class="btn btn-primary">更新</button>
+              </fieldset>
+            </form>
             <!-- ここから下を編集する必要はありません -->
           </div>
         </div>
       </div>
     </div>
     <!-- end container -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script
-      src="../../static/js/bootstrap.min.js"
-      th:src="@{/js/bootstrap.min.js}"
-    ></script>
+   <div th:insert="footers::footer"></div>
   </body>
 </html>

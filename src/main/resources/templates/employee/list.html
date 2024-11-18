@@ -22,55 +22,7 @@
   </head>
   <body>
     <div class="container">
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button
-              type="button"
-              class="navbar-toggle collapsed"
-              data-toggle="collapse"
-              data-target="#bs-example-navbar-collapse-1"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span> <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a
-              class="navbar-brand"
-              href="list.html"
-              th:href="@{/employee/showList}"
-            >
-              <!-- 企業ロゴ -->
-              <img
-                src="../../static/img/header_logo_small.png"
-                th:src="@{/img/header_logo_small.png}"
-              />
-            </a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div
-            class="collapse navbar-collapse"
-            id="bs-example-navbar-collapse-1"
-          >
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="list.html">従業員管理</a></li>
-            </ul>
-            <p class="navbar-text navbar-right">
-              <span th:text="${session.administratorName + 'さん'}"
-                >山田さん</span
-              >こんにちは！ &nbsp;&nbsp;&nbsp;
-              <a href="../administrator/login.html" class="navbar-link"
-                >ログアウト</a
-              >
-            </p>
-          </div>
-          <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-      </nav>
+      <div th:insert="footers::header"></div>
 
       <!-- パンくずリスト -->
       <ol class="breadcrumb">
@@ -87,6 +39,34 @@
           <!-- ここから上を編集する必要はありません -->
 
           <!-- ここにモックのtable要素を貼り付けます -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>従業員名</th>
+                <th>入社日</th>
+                <th>扶養人数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <span th:each="list:${employeeList}">
+              <tr>
+                <td>
+                  <a th:href="@{'/employee/showDetail?id='+${list.id}}">
+                    <span th:text="${list.name}">山田太郎</span>
+                  </a>
+                </td>
+                <td>
+                  <span  th:text="${list.hireDate}">2016/12/1</span>
+                </td>
+                <td>
+                  <span th:text="${list.dependentsCount}">3人</span>人
+                </td>
+              </tr>
+             </span>
+           
+            </tbody>
+          </table>
+
 
           <!-- ここから下を編集する必要はありません -->
         </div>
@@ -94,10 +74,6 @@
     </div>
     <!-- end container -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script
-      src="../../static/js/bootstrap.min.js"
-      th:src="@{/js/bootstrap.min.js}"
-    ></script>
+<div th:insert="footers::footer"></div>
   </body>
 </html>
