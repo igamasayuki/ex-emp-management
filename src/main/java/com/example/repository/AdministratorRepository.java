@@ -28,12 +28,12 @@ public class AdministratorRepository {
     public void insert(Administrator administrator){
         SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
 
-        String sql = "INSET INTO administrator (name, mail_address, password) VALUES (name = :name, mail_address = :mailAddress, password = :password)";
+        String sql = "INSET INTO administrator (name, mail_address, password) VALUES (name = :name, mail_address = :mailAddress, password = :password);";
         template.update(sql, param);
     }
 
     public Administrator findByMailAddressAndPassword(String mailAddress, String password){
-        String sql = "SELECT * FROM administrators WHERE mail_address = :mailAddress AND password = :password";
+        String sql = "SELECT * FROM administrators WHERE mail_address = :mailAddress AND password = :password;";
 
         SqlParameterSource param = new MapSqlParameterSource().addValue("mail_address", mailAddress).addValue("password", password);
 
