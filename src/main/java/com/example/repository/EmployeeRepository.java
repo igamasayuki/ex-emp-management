@@ -3,6 +3,7 @@ package com.example.repository;
 import com.example.domain.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -53,6 +54,14 @@ public class EmployeeRepository {
         Employee employee = template.queryForObject(sql, param, EMPLOYEE_ROW_MAPPER);
 
         return employee;
+    }
+
+    public void update(Employee employee){
+        SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
+
+        String sql = "UPDATE employees SET name = :name, image = :image, gender = :gender, hire_date = :hireDate, mail_address = :mailAddress, zip_code = :zipCode, address = :address, telephone = :telephone, salary = :salary, characteristics = :characteristics, dependents_count = :dependentsCount WHERE id = :id;";
+
+        template.update(sql, param);
     }
 
 }
