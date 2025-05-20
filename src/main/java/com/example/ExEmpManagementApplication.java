@@ -6,14 +6,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class ExEmpManagementApplication extends SpringBootServletInitializer {
+public class ExEmpManagementApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ExEmpManagementApplication.class, args);
 	}
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(ExEmpManagementApplication.class);
-	}
 }
