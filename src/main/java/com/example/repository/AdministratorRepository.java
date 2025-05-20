@@ -11,13 +11,15 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 /**
- * administratorsテーブルを操作するリポジトリ
+ * administratorsテーブルを操作するリポジトリ.
  */
 @Repository
 public class AdministratorRepository {
 
+
     @Autowired
     private NamedParameterJdbcTemplate template;
+
 
     private static final RowMapper<Administrator> ADMINISTRATOR_ROW_MAPPER
             = (rs, rowNum) -> {
@@ -30,7 +32,9 @@ public class AdministratorRepository {
         return administrator;
     };
 
-    /**管理者情報を挿入するまたは更新する
+    /**
+     * 管理者情報を挿入するまたは更新する.
+     *
      * @param administrator 管理者情報
      */
     public void insert(Administrator administrator){
@@ -49,11 +53,12 @@ public class AdministratorRepository {
     }
 
     /**
-     * メールアドレスとパスワードから管理者権限を取得する
+     * メールアドレスとパスワードから管理者情報を取得する.
      * 1件もない場合はnullを返す
-     * @param mailAddress
-     * @param password
-     * @return
+     *
+     * @param mailAddress メールアドレス
+     * @param password パスワード
+     * @return 管理者情報
      */
     public Administrator findByMailAddressAndPassword(String mailAddress, String password){
 

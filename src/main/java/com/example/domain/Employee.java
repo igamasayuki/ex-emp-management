@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * 従業員を表すドメインクラス.
- * employeeテーブルに対応。
+ * employeesテーブルに対応。
  */
 public class Employee {
 

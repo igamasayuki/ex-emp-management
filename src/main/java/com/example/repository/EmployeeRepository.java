@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import java.awt.*;
 import java.util.List;
 
 
@@ -44,9 +43,9 @@ public class EmployeeRepository {
     };
 
     /**
-     * すべての従業員を入社日の降順で取得します.
+     * 従業員一覧を入社日の降順で取得します.
      *
-     * @return　従業員のリスト。　従業員が存在しない場合は空のリストを返します。
+     * @return 従業員一覧情報
      */
 
     public List<Employee> findAll(){
@@ -60,10 +59,10 @@ public class EmployeeRepository {
     }
 
     /**
-     * 指定されたIDに対応する従業員情報を取得します。
+     * 指定されたIDに対応する従業員情報を取得します.
      *
      * @param id 検索する従業員ID
-     * @return　該当する従業員情報。　IDに対応する従業員がいない場合はnullを返します。
+     * @return 従業員情報(検索されない場合はnullを返します。)
      */
 
     public Employee findById(Integer id){
@@ -84,9 +83,9 @@ public class EmployeeRepository {
     }
 
     /**
-     * 指定された従業員情報でデータベースを更新します。
+     * 指定された従業員情報でデータベースを更新します.
      *
-     * @param employee　更新する従業員情報。IDは更新対象の特定に使用します。
+     * @param employee　更新する従業員情報。
      */
     public void update(Employee employee){
 
