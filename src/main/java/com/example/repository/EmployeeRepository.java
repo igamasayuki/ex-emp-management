@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * employeesテーブルを操作するリポジトリ.
+ */
 @Repository
 @RequiredArgsConstructor
 public class EmployeeRepository {
@@ -34,6 +37,7 @@ public class EmployeeRepository {
 
     /**
      * 入社日順で全従業員情報を取得する
+     *
      * @return 従業員情報のリスト(従業員が存在しない場合は空のリストを返す)
      */
     public List<Employee> findAll() {
@@ -43,6 +47,7 @@ public class EmployeeRepository {
 
     /**
      * idを基に従業員情報を取得する
+     *
      * @param id 従業員ID
      * @return 従業員情報(従業員が存在しない場合は例外がスローされる)
      */
@@ -55,11 +60,26 @@ public class EmployeeRepository {
 
     /**
      * 従業員情報を更新する
+     *
      * @param employee 登録する従業員情報
      */
     public void update(Employee employee) {
         SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
-        String sql = "UPDATE employees SET name = :name, image = :image, gender = :gender, hire_date = :hireDate, mail_address = :mailAddress, zip_code = :zipCode, address = :address, telephone = :telephone, salary = :salary, characteristics = :characteristics, dependents_count = :dependentsCount WHERE id = :id";
+        String sql = """
+        UPDATE employees SET
+            name = :name,
+            image = :image,
+            gender = :gender,
+            hire_date = :hireDate,
+            mail_address = :mailAddress,
+            zip_code = :zipCode,
+            address = :address,
+            telephone = :telephone,
+            salary = :salary,
+            characteristics = :characteristics,
+            dependents_count = :dependentsCount
+        WHERE id = :id
+        """;
         template.update(sql, param);
     }
 }

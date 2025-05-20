@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * administratorsテーブルを操作するリポジトリ.
+ */
 @Repository
 @RequiredArgsConstructor
 public class AdministratorRepository {
@@ -25,7 +28,8 @@ public class AdministratorRepository {
     };
 
     /**
-     * 管理者情報を登録する
+     * 管理者情報を登録する.
+     *
      * @param administrator 登録する管理者情報
      */
     public void insert(Administrator administrator) {
@@ -35,7 +39,8 @@ public class AdministratorRepository {
     }
 
     /**
-     * 管理者情報をメールアドレスとパスワードで検索する
+     * 管理者情報をメールアドレスとパスワードで検索する.
+     *
      * @param mailAddress 管理者のメールアドレス
      * @param password 管理者のパスワード
      * @return 管理者情報のリスト

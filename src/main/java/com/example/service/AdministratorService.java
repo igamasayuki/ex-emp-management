@@ -6,6 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * 管理者情報を操作するサービス.
+ */
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -13,7 +16,7 @@ public class AdministratorService {
     private final AdministratorRepository administratorRepository;
 
     /**
-     * メールアドレスとパスワードを基に、管理者としてログインする
+     * メールアドレスとパスワードを基に、管理者としてログインする.
      *
      * @param mailAddress メールアドレス
      * @param password    パスワード
@@ -24,7 +27,7 @@ public class AdministratorService {
     }
 
     /**
-     * 管理者情報を登録する
+     * 管理者情報を登録する.
      *
      * @param administrator 登録する管理者情報
      */
