@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.domain.Administrator;
+import com.example.domain.LoginForm;
 import com.example.form.InsertAdministratorForm;
 import com.example.service.AdministratorService;
 import org.springframework.beans.BeanUtils;
@@ -37,6 +38,12 @@ public class AdministratorController {
         return "administrator/insert";
     }
 
+    /**
+     * 管理者を登録する.
+     *
+     * @param form フォーム
+     * @return ログイン画面
+     */
     @PostMapping("/insert")
     public String insert(InsertAdministratorForm form){
 
@@ -52,7 +59,16 @@ public class AdministratorController {
 
         administratorService.insert(administrator);
         return "redirect:/";
+    }
 
+    /**
+     * ログイン画面を描画する.
+     * @param form フォーム
+     * @return ログイン画面
+     */
+    @GetMapping("/")
+    public String toLogin(LoginForm form){
+        return "administrator/login";
     }
 
 
