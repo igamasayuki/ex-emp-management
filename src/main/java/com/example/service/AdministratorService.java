@@ -35,6 +35,12 @@ public class AdministratorService {
         administratorRepository.insert(administrator);
     }
 
+    /**
+     *  指定されたメールアドレスとパスワードと一致する管理者情報を検索します。
+     * @param mailAddress メールアドレス
+     * @param password  パスワード
+     * @return 一致する管理者が見つかった場合はadministratorをいない場合はnullを返します。
+     */
     public Administrator login(String mailAddress, String password) {
         Administrator administrator = administratorRepository.findByMailAddressAndPassword(mailAddress, password);
         return administrator;

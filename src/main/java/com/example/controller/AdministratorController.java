@@ -7,7 +7,9 @@ import com.example.service.AdministratorService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -69,6 +71,15 @@ public class AdministratorController {
     @GetMapping("/")
     public String toLogin(LoginForm form){
         return "administrator/login";
+    }
+
+    @PostMapping("/login")
+    public String login(LoginForm form, Model model){
+        Administrator administrator = administratorService.login(form.getMailAddress(), form.getPassword());
+
+        if (administrator == null){
+            model.addAttribute();
+        }
     }
 
 
