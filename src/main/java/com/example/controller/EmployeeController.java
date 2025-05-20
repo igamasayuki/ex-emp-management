@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.domain.Employee;
+import com.example.form.UpdateEmployeeForm;
 import com.example.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -31,5 +32,18 @@ public class EmployeeController {
         List<Employee> employeeList = employeeService.showList();
         model.addAttribute("employeeList", employeeList);
         return "employee/list";
+    }
+
+    /**
+     * 従業員詳細を取得し、従業員詳細画面を表示する.
+     *
+     * @param id    従業員ID
+     * @return 従業員詳細画面
+     */
+    @GetMapping("/showDetail")
+    public String showDetail(String id, Model model, UpdateEmployeeForm updateEmployeeForm) {
+        Employee employee = employeeService.showDetail(Integer.parseInt(id));
+        model.addAttribute("employee", employee);
+        return "employee/detail";
     }
 }
