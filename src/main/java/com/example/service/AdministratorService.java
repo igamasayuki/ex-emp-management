@@ -13,11 +13,11 @@ public class AdministratorService {
     private final AdministratorRepository administratorRepository;
 
     /**
-     * 管理者情報をメールアドレスとパスワードで検索する
+     * メールアドレスとパスワードを基に、管理者としてログインする
      *
      * @param mailAddress メールアドレス
      * @param password    パスワード
-     * @return 管理者情報
+     * @return 管理者の情報
      */
     public Administrator login(String mailAddress, String password) {
         return administratorRepository.findByMailAddressAndPassword(mailAddress, password);

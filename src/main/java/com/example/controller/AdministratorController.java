@@ -19,6 +19,12 @@ public class AdministratorController {
     private final AdministratorService administratorService;
     private final HttpSession session;
 
+    /**
+     * ログイン画面に遷移する
+     * @param loginForm ログインフォーム
+     * @param model リクエストスコープ
+     * @return ログイン画面のURL
+     */
     @GetMapping
     public String toLogin(LoginForm loginForm, Model model) {
         model.addAttribute("loginForm", loginForm);
@@ -43,10 +49,10 @@ public class AdministratorController {
     }
 
     /**
-     * 管理者情報をメールアドレスとパスワードで検索する
+     * 管理者情報登録画面に遷移する
      * @param insertAdministratorForm 登録する管理者情報
      * @param model リクエストスコープ
-     * @return リダイレクト先のURL
+     * @return 管理者情報登録画面のURL
      */
     @GetMapping("/toInsert")
     public String toInsert(InsertAdministratorForm insertAdministratorForm, Model model) {
@@ -58,7 +64,7 @@ public class AdministratorController {
      * 管理者情報を登録する
      * @param insertAdministratorForm 登録する管理者情報
      * @param model リクエストスコープ
-     * @return リダイレクト先のURL
+     * @return ログイン画面のURL
      */
     @PostMapping("/insert")
     public String insert(InsertAdministratorForm insertAdministratorForm, Model model) {
