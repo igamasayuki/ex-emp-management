@@ -24,8 +24,9 @@ public class AdministratorRepository {
         Administrator administrator = new Administrator();
         administrator.setId(rs.getInt("id"));
         administrator.setName(rs.getString("name"));
-        administrator.setMailAddress(rs.getString("mailAddress"));
+        administrator.setMailAddress(rs.getString("mail_address"));
         administrator.setPassword(rs.getString("password"));
+
         return administrator;
     };
 
@@ -37,13 +38,13 @@ public class AdministratorRepository {
         SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
 
         if(administrator.getId() == null){
-            String insertSql = "inset into administrators(name, mailAddress, password) " +
-                    "values(:name, :mailAddress, password)";
+            String insertSql = "INSERT INTO administrators(name, mail_address, password) " +
+                    "VALUES(:name, :mailAddress, :password)";
             template.update(insertSql, param);
         }else{
-            String updateSQL = "update administrator " +
-                    "set name=:name, mailAddress=:mailAddress, password=:password where id=:id);";
-            template.update(updateSQL, param);
+            String updateSql = "UPDATE administrators " +
+                    "SET name=:name, mail_address=:mailAddress, password=:password WHERE id=:id);";
+            template.update(updateSql, param);
         }
     }
 
@@ -56,8 +57,8 @@ public class AdministratorRepository {
      */
     public Administrator findByMailAddressAndPassword(String mailAddress, String password){
 
-        String sql  = "select id, name, mailAddress, password " +
-                "from administrator where mailAddress and password";
+        String sql  = "SELECT id, name, mail_address, password " +
+                "FROM administrators where mail_address AND password";
 
 
         SqlParameterSource param = new MapSqlParameterSource()
