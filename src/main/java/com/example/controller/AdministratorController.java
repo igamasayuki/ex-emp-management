@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.domain.Administrator;
 import com.example.form.InsertAdministratorForm;
+import com.example.form.LoginForm;
 import com.example.service.AdministratorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,8 @@ public class AdministratorController {
     private final AdministratorService administratorService;
 
     @GetMapping
-    public String toLogin() {
+    public String toLogin(LoginForm loginForm, Model model) {
+        model.addAttribute("loginForm", loginForm);
         return "administrator/login";
     }
 

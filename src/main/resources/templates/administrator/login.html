@@ -40,7 +40,49 @@
           <div class="well">
             <!-- ここから上を編集する必要はありません -->
 
-            <!-- ここにモックのform要素を貼り付けます -->
+            <form method="post" th:action="@{/login}" th:object="${loginForm}">
+              <fieldset>
+                <legend>ログイン</legend>
+
+                <div class="form-group">
+                  <div class="alert alert-danger">
+                    <p>メールアドレスまたはパスワードが間違っています</p>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="mailAddress">メールアドレス:</label>
+                  <input
+                    type="text"
+                    th:field="*{mailAddress}"
+                    id="mailAddress"
+                    class="form-control"
+                    placeholder="Email"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="inputPassword">パスワード:</label>
+                  <input
+                    type="password"
+                    th:field="*{password}"
+                    id="inputPassword"
+                    class="form-control"
+                    placeholder="Password"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">
+                    ログイン
+                  </button>
+                </div>
+
+                <div class="form-group">
+                  <a th:href="@{/toInsert}">管理者登録はこちらから</a>
+                </div>
+              </fieldset>
+            </form>
 
             <!-- ここから下を編集する必要はありません -->
           </div>

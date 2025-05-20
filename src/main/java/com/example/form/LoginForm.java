@@ -9,8 +9,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class InsertAdministratorForm {
-    private String name;
+public class LoginForm {
     private String mailAddress;
     private String password;
 }
