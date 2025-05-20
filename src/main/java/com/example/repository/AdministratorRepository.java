@@ -63,13 +63,12 @@ public class AdministratorRepository {
     public Administrator findByMailAddressAndPassword(String mailAddress, String password){
 
         String sql  = "SELECT id, name, mail_address, password " +
-                "FROM administrators where mail_address AND password";
+                "FROM administrators where mail_address = :mailAddress AND password = :password";
 
 
         SqlParameterSource param = new MapSqlParameterSource()
                 .addValue("mailAddress", mailAddress)
                 .addValue("password", password);
-
 
         try {
             Administrator administrator = template.queryForObject(sql, param, ADMINISTRATOR_ROW_MAPPER);

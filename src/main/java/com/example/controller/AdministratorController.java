@@ -4,6 +4,7 @@ import com.example.domain.Administrator;
 import com.example.domain.LoginForm;
 import com.example.form.InsertAdministratorForm;
 import com.example.service.AdministratorService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class AdministratorController {
+
+    @Autowired
+    private HttpSession session;
 
     @Autowired
     private final AdministratorService administratorService;
@@ -78,8 +82,11 @@ public class AdministratorController {
         Administrator administrator = administratorService.login(form.getMailAddress(), form.getPassword());
 
         if (administrator == null){
-            model.addAttribute();
+            model.addAttribute("errorMessage", "メールアドレスまたはパスワードが不正です。");
+            return "administrator/login";
         }
+        session.setAttribute("administratorName", administrator.getName());
+        return "redirect:/employee/showList";
     }
 
 
