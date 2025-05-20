@@ -44,9 +44,11 @@
               <fieldset>
                 <legend>ログイン</legend>
 
-                <div class="form-group">
+                <div th:if="${loginError != null}" class="form-group">
                   <div class="alert alert-danger">
-                    <p>メールアドレスまたはパスワードが間違っています</p>
+                    <p th:text="${loginError}">
+                      メールアドレスまたはパスワードが間違っています
+                    </p>
                   </div>
                 </div>
 

@@ -41,7 +41,7 @@ public class AdministratorRepository {
      * @param password 管理者のパスワード
      * @return 管理者情報のリスト
      */
-    public List<Administrator> findByMailAddressAndPassword(String mailAddress, String password) {
+    public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
         String sql = "SELECT id, name, mail_address, password FROM administrators WHERE mail_address = :mailAddress AND password = :password";
         SqlParameterSource param = new MapSqlParameterSource()
                 .addValue("mailAddress", mailAddress)
@@ -50,7 +50,7 @@ public class AdministratorRepository {
         if(administratorList.isEmpty()) {
             return null;
         } else {
-            return administratorList;
+            return administratorList.get(0);
         }
     }
 }
