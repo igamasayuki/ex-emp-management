@@ -5,12 +5,16 @@ package com.example.domain;
  * administratorテーブルに対応。
  */
 public class Administrator {
+
     /**ID*/
     private Integer id;
+
     /**名前*/
     private String name;
+
     /**メールアドレス*/
     private String mailAddress;
+
     /**パスワード*/
     private String password;
 
